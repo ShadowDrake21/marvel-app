@@ -12,8 +12,6 @@ const CharactersFetching = ({ searchTerm }) => {
   const [characters, setCharacters] = useState({})
   const [isSuccess, setIsSuccess] = useState(false)
 
-  console.log(searchTerm)
-
   const fetchCharacters = async () => {
     let characterUrl = `${API_URL}/v1/public/characters`
 
@@ -38,8 +36,9 @@ const CharactersFetching = ({ searchTerm }) => {
 
   useEffect(() => {
     fetchCharacters()
-  }, [])
+  }, [searchTerm])
 
+  console.log(characters, searchTerm)
   return (
     <div className={styles.page}>
       {!isSuccess && (
