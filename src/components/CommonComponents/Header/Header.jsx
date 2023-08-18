@@ -13,7 +13,10 @@ const Header = () => {
           </NavLink>
           <ul className={styles.list__container}>
             <li>
-              <NavLink to="/">Characters</NavLink>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="characters">Characters</NavLink>
             </li>
             <li>
               <NavLink to="/">Comics</NavLink>

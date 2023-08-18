@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles/index.scss'
@@ -9,15 +9,18 @@ import App from './containers/App/App'
 
 const router = createBrowserRouter([
   {
-    path: '/',
     element: <App />,
     children: [
+      {
+        path: '/',
+        element: <Navigate to="/home" replace />,
+      },
       {
         path: '/home',
         element: <HomePage />,
       },
       {
-        path: '/characters',
+        path: 'characters',
         element: <CharactersPage />,
       },
     ],
