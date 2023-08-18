@@ -40,7 +40,7 @@ const CharactersFetching = ({ searchTerm }) => {
 
   console.log(characters, searchTerm)
   return (
-    <div className={styles.page}>
+    <div>
       {!isSuccess && (
         <p className={styles.fetchError}>
           There was an error while fetching a data. Try one more time
