@@ -19,7 +19,7 @@ const ChooseThemeCard = ({ classes, theme, text, img }) => {
   const isTheme = useTheme()
   return (
     <div
-      className={cn(styles.card, classes)}
+      className={cn(styles.card, styles.theme__generally, classes)}
       onClick={() => isTheme.change(theme)}
     >
       <div className={styles.card__header}>{text}</div>
