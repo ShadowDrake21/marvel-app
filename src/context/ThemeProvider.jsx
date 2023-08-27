@@ -24,4 +24,6 @@ export const ThemeProvider = ({ children, ...props }) => {
   )
 }
 
+export default ThemeProvider
+
 export const useTheme = () => useContext(ThemeContext)

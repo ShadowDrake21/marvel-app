@@ -6,6 +6,7 @@ import HomePage from './containers/HomePage'
 import Header from './components/CommonComponents/Header'
 import CharactersPage from './containers/CharactersPage/CharactersPage'
 import App from './containers/App/App'
+import { ThemeProvider } from './context/ThemeProvider'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 )

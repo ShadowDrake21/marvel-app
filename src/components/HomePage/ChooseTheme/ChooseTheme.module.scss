@@ -1,0 +1,70 @@
+.container {
+  --color-neutral: #adb0e0;
+  --color-dark: #a80000a6;
+  --color-light: #a78bd5;
+  --color-purpulish: #994d8b;
+  --color-reddish: #e54630;
+
+  --color-shadow-neutral: #9ca1dfef;
+  --color-shadow-dark: #bb00008e;
+  --color-shadow-light: #9468daee;
+  --color-shadow-purpulish: #7a3e6f;
+  --color-shadow-reddish: #bd3a28f5;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1500px;
+  padding: 0 10px;
+  margin: 40px auto 0;
+}
+
+.card {
+  width: var(--width-card);
+  position: relative;
+  cursor: pointer;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card__header {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  text-align: center;
+  padding-top: var(--padding-medium);
+  background-color: var(--color-bluekish);
+  font-size: var(--font-size-subheader);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.card__img {
+  height: 100%;
+  width: var(--width-card);
+  object-fit: cover;
+  border-radius: var(--border-radius-usual);
+}
+
+.theme__generally {
+  transition: all 0.3s;
+}
+
+.theme__neutral:hover {
+  box-shadow: 0 0 7px 2px var(--color-shadow-neutral);
+}
+
+.theme__light:hover {
+  box-shadow: 0 0 7px 2px var(--color-shadow-light);
+}
+.theme__dark:hover {
+  box-shadow: 0 0 7px 2px var(--color-shadow-dark);
+}
+.theme__purpulish:hover {
+  box-shadow: 0 0 7px 2px var(--color-shadow-purpulish);
+}
+.theme__reddish:hover {
+  box-shadow: 0 0 7px 2px var(--color-shadow-reddish);
+}

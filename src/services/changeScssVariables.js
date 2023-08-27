@@ -3,6 +3,8 @@ export const changeScssVariables = (theme) => {
 
   const scssVariables = ['header', 'bgimage']
 
+  // console.log(root.style, theme)
+
   scssVariables.forEach((element) => {
     root.style.setProperty(
       `--theme-default-${element}`,
