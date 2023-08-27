@@ -8,6 +8,8 @@
   --color-red-hover: rgb(182, 0, 0);
 
   --font-size-subheader: 18px;
+  --font-size-subheader: 18px;
+  --font-size-header: 28px;
   --font-size-error: 32px;
 
   --height-full-display: 100vh;
@@ -48,4 +50,10 @@ a {
   max-width: 1400px;
   padding: 0 20px;
   margin: 0 auto;
+}
+
+.page__title {
+  line-height: 1.4;
+  text-align: center;
+  font-size: var(--font-size-header);
 }
