@@ -51,6 +51,9 @@ const CharactersFetching = ({ searchTerm }) => {
         characters.map((character) => (
           <CharacterCard key={character.id} {...character} />
         ))}
+      {characters.length === 0 && (
+        <p className={styles.fetchError}>No results. Try another query</p>
+      )}
     </div>
   )
 }

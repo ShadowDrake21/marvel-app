@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import styles from './CharactersPage.module.scss'
 import CharactersFetching from '../../components/CharactersPage/CharactersFetching/CharactersFetching'
+import InputUI from '../../components/UI/InputUI/InputUI'
+import TitleUI from '../../components/UI/TitleUI/TitleUI'
+import styles from './CharactersPage.module.scss'
 
 const CharactersPage = () => {
   const [value, setValue] = useState('')
@@ -9,10 +11,19 @@ const CharactersPage = () => {
     setValue(event.target.value)
   }
 
+  const clearSearch = () => {
+    setValue('')
+  }
+
   return (
     <div className="container">
-      <div>Input value: {value}</div>
-      <input type="search" value={value} onChange={onChange} />
+      <TitleUI text="Characters" />
+      <InputUI
+        value={value}
+        placeholder="Enter a character's name"
+        onChange={onChange}
+        onClick={clearSearch}
+      />
       {value && <CharactersFetching searchTerm={value} />}
     </div>
   )
