@@ -1,7 +1,7 @@
 export const changeScssVariables = (theme) => {
   const root = document.querySelector(':root')
 
-  const scssVariables = ['header', 'bgimage']
+  const scssVariables = ['bgimage']
 
   // console.log(root.style, theme)
 

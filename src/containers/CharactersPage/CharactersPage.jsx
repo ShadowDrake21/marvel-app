@@ -10,7 +10,7 @@ const CharactersPage = () => {
   }
 
   return (
-    <div className={styles.page}>
+    <div className="container">
       <div>Input value: {value}</div>
       <input type="search" value={value} onChange={onChange} />
       {value && <CharactersFetching searchTerm={value} />}

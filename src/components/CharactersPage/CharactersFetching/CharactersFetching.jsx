@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MD5 from 'crypto-js/md5'
 import styles from './CharactersFetching.module.scss'
+import CharacterCard from '../CharacterCard/CharacterCard'
 
 const API_URL = process.env.REACT_APP_BASE_URL
 
@@ -40,7 +41,7 @@ const CharactersFetching = ({ searchTerm }) => {
 
   console.log(characters, searchTerm)
   return (
-    <div>
+    <div className={styles.cards}>
       {!isSuccess && (
         <p className={styles.fetchError}>
           There was an error while fetching a data. Try one more time
@@ -48,7 +49,7 @@ const CharactersFetching = ({ searchTerm }) => {
       )}
       {isSuccess &&
         characters.map((character) => (
-          <div key={character.id}>{character.name}</div>
+          <CharacterCard key={character.id} {...character} />
         ))}
     </div>
   )

@@ -6,6 +6,7 @@
   --color-red: #ed1c24;
   --color-bluekish: rgba(91, 94, 255, 0.76);
 
+  --color-bluekish-hover: rgba(91, 94, 255, 0.8);
   --color-red-hover: rgb(182, 0, 0);
 
   --font-size-subheader: 18px;
@@ -23,17 +24,10 @@
   --padding-y-small: 5px;
   --padding-medium: 20px;
 
+  --border-radius-card: 10px;
   --border-radius-usual: 15px;
 
   /*THEMES*/
-  --theme-neutral-header: #ffffff;
-  --theme-light-header: #cac8c8;
-  --theme-dark-header: #ff1500;
-  --theme-purple-header: #d9a1f0;
-  --theme-red-header: #ffffff;
-
-  --theme-default-header: var(--theme-neutral-header);
-
   --theme-neutral-bgimage: url('../assets/photos/neutral-bg.jpg');
   --theme-light-bgimage: url('../assets/photos/light-bg.jpg');
   --theme-dark-bgimage: url('../assets/photos/dark-bg.jpg');
@@ -57,7 +51,7 @@ body {
   background-position: top center;
   background-size: cover;
   min-height: var(--height-full-display);
-  color: var(--theme-default-header);
+  color: var(--color-white);
   font-family: var(--font-family-basic);
 }
 
