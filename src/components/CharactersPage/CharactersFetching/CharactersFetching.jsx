@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import MD5 from 'crypto-js/md5'
 import styles from './CharactersFetching.module.scss'
 import CharacterCard from '../CharacterCard/CharacterCard'
+import Pagination from '../../CommonComponents/Pagination/Pagination'
 
 const API_URL = process.env.REACT_APP_BASE_URL
 
@@ -10,8 +11,10 @@ const getHash = (ts, secretKey, publicKey) => {
 }
 
 const CharactersFetching = ({ searchTerm }) => {
-  const [characters, setCharacters] = useState({})
+  const [characters, setCharacters] = useState([])
   const [isSuccess, setIsSuccess] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postPerPage, setPostPerPage] = useState(10)
 
   const fetchCharacters = async () => {
     let characterUrl = `${API_URL}/v1/public/characters`
@@ -39,6 +42,10 @@ const CharactersFetching = ({ searchTerm }) => {
     fetchCharacters()
   }, [searchTerm])
 
+  const lastPostIndex = currentPage * postPerPage
+  const firstPostIndex = lastPostIndex - postPerPage
+  const currentPosts = characters.slice(firstPostIndex, lastPostIndex)
+
   console.log(characters, searchTerm)
   return (
     <div className={styles.cards}>
@@ -48,12 +55,18 @@ const CharactersFetching = ({ searchTerm }) => {
         </p>
       )}
       {isSuccess &&
-        characters.map((character) => (
+        currentPosts.map((character) => (
           <CharacterCard key={character.id} {...character} />
         ))}
       {characters.length === 0 && (
         <p className={styles.fetchError}>No results. Try another query</p>
       )}
+      <Pagination
+        totalPosts={characters.length}
+        postPerPage={postPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   )
 }
