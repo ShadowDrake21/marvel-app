@@ -7,6 +7,7 @@ import Header from './components/CommonComponents/Header'
 import CharactersPage from './containers/CharactersPage/CharactersPage'
 import App from './containers/App/App'
 import { ThemeProvider } from './context/ThemeProvider'
+import SingleCharacter from './containers/SingleCharacter/SingleCharacter'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
         path: 'characters',
         element: <CharactersPage />,
       },
+      { path: 'characters/:id', element: <SingleCharacter /> },
     ],
   },
 ])
