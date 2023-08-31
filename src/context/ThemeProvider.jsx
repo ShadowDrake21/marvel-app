@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { changeScssVariables } from '../services/changeScssVariables'
+import { setLocalStorage } from '../services/localStorage'
 
 export const THEME_DARK = 'dark'
 export const THEME_LIGHT = 'light'
@@ -15,6 +16,7 @@ export const ThemeProvider = ({ children, ...props }) => {
   const change = (name) => {
     setTheme(name)
     changeScssVariables(name)
+    setLocalStorage('theme', name)
   }
 
   return (
