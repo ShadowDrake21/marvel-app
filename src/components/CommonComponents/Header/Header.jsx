@@ -1,42 +1,53 @@
 import React from 'react'
-import styles from './Header.module.scss'
 import logo from '../../../assets/photos/logo.png'
 import { NavLink } from 'react-router-dom'
+import styles from './Header.module.scss'
 
 const Header = () => {
   return (
     <div className={styles.header}>
       <div className="container">
         <div className={styles.header__inner}>
-          <NavLink to="/" className={styles.logo__link}>
+          <NavLink to="/home" className={styles.logo__link}>
             <img src={logo} className={styles.logo} alt="logo" />
           </NavLink>
           <ul className={styles.list__container}>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <HeaderLink text="Home" path="/home" />
             </li>
             <li>
-              <NavLink to="characters">Characters</NavLink>
+              <HeaderLink text="Characters" path="characters" />
             </li>
             <li>
-              <NavLink to="/">Comics</NavLink>
+              <HeaderLink text="Comics" path="/" />
             </li>
             <li>
-              <NavLink to="/">Creators</NavLink>
+              <HeaderLink text="Creators" path="/" />
             </li>
             <li>
-              <NavLink to="/">Events</NavLink>
+              <HeaderLink text="Home" path="/" />
             </li>
             <li>
-              <NavLink to="/">Series</NavLink>
+              <HeaderLink text="Home" path="/" />
             </li>
             <li>
-              <NavLink to="/">Stories</NavLink>
+              <HeaderLink text="Home" path="/" />
             </li>
           </ul>
         </div>
       </div>
     </div>
+  )
+}
+
+const HeaderLink = ({ text, path }) => {
+  return (
+    <NavLink
+      to={path}
+      className={({ isActive }) => (isActive ? `${styles.active}` : '')}
+    >
+      {text}
+    </NavLink>
   )
 }
 

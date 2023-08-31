@@ -61,12 +61,14 @@ const CharactersFetching = ({ searchTerm }) => {
       {characters.length === 0 && (
         <p className={styles.fetchError}>No results. Try another query</p>
       )}
-      <Pagination
-        totalPosts={characters.length}
-        postPerPage={postPerPage}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+      {characters.length > 10 && (
+        <Pagination
+          totalPosts={characters.length}
+          postPerPage={postPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      )}
     </div>
   )
 }

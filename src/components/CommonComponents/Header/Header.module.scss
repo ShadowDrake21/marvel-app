@@ -34,6 +34,10 @@
       height: var(--height-header-full);
       font-size: var(--font-size-subheader);
       color: var(--color-white);
+
+      &.active {
+        background-color: #a53030;
+      }
     }
 
     &:hover {
