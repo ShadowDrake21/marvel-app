@@ -4,8 +4,10 @@
   --color-white: #fff;
   --color-black: #000;
   --color-red: #ed1c24;
+  --color-gray: #ccc;
   --color-bluekish: rgba(91, 94, 255, 0.76);
 
+  --color-bluekish-hover: rgba(91, 94, 255, 0.8);
   --color-red-hover: rgb(182, 0, 0);
 
   --font-size-subheader: 18px;
@@ -23,17 +25,10 @@
   --padding-y-small: 5px;
   --padding-medium: 20px;
 
+  --border-radius-card: 10px;
   --border-radius-usual: 15px;
 
   /*THEMES*/
-  --theme-neutral-header: #ffffff;
-  --theme-light-header: #cac8c8;
-  --theme-dark-header: #ff1500;
-  --theme-purple-header: #d9a1f0;
-  --theme-red-header: #ffffff;
-
-  --theme-default-header: var(--theme-neutral-header);
-
   --theme-neutral-bgimage: url('../assets/photos/neutral-bg.jpg');
   --theme-light-bgimage: url('../assets/photos/light-bg.jpg');
   --theme-dark-bgimage: url('../assets/photos/dark-bg.jpg');
@@ -49,6 +44,29 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-y: scroll;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #ffffff #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #0011ff;
+  border-radius: 10px;
+  border: 3px solid #000000;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -56,8 +74,9 @@ body {
   background-image: var(--theme-default-bgimage);
   background-position: top center;
   background-size: cover;
+  background-repeat: no-repeat;
   min-height: var(--height-full-display);
-  color: var(--theme-default-header);
+  color: var(--color-white);
   font-family: var(--font-family-basic);
 }
 
@@ -69,6 +88,13 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
 }
 
 h1,
@@ -84,10 +110,4 @@ h6 {
   max-width: 1400px;
   padding: 0 var(--padding-medium);
   margin: 0 auto;
-}
-
-.page__title {
-  line-height: 1.4;
-  text-align: center;
-  font-size: var(--font-size-header);
 }

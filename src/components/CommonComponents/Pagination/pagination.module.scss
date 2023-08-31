@@ -1,0 +1,21 @@
+.pagination {
+  display: flex;
+  gap: 10px;
+}
+
+.paginationBtn {
+  width: 35px;
+  height: 35px;
+  background-color: var(--color-bluekish);
+  color: #fff;
+  font-size: 20px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  box-shadow: 7px -13px 26px -8px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+
+  &.paginationBtnActive {
+    background-color: var(--color-red);
+    border-color: #d32424;
+  }
+}

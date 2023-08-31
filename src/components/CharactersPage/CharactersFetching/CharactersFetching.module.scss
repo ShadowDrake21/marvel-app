@@ -1,4 +1,12 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 25px;
+}
+
 .fetchError {
+  width: 100%;
   text-align: center;
   font-size: 32px;
   color: white;
