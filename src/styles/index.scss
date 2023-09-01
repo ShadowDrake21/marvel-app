@@ -111,3 +111,10 @@ h6 {
   padding: 0 var(--padding-medium);
   margin: 0 auto;
 }
+
+.fetchError {
+  width: 100%;
+  text-align: center;
+  font-size: 32px;
+  color: white;
+}

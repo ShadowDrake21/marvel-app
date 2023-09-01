@@ -1,4 +1,5 @@
 import MD5 from 'crypto-js/md5'
+import { fetchCharacters } from '../static/fetchingTypes'
 
 const API_URL = process.env.REACT_APP_BASE_URL
 
@@ -28,21 +29,20 @@ const putUrl = (type, searchTerm, id) => {
   return url
 }
 
-export const fetching = async (
-  type,
-  setObject,
-  setBoolean,
-  searchTerm = null,
-  id = null
-) => {
+export const fetching = async (type, setObject, setBoolean, searchTerm, id) => {
   try {
     const url = putUrl(type, searchTerm, id)
     const response = await fetch(url)
     const dataObj = await response.json()
     const dataArr = dataObj.data.results
-    setObject(dataArr)
+    if (type === fetchCharacters) {
+      setObject(dataArr)
+    } else {
+      setObject(...dataArr)
+    }
     setBoolean(true)
   } catch (err) {
+    console.error(err)
     return
   }
 }

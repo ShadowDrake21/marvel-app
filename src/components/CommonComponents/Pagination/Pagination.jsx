@@ -13,7 +13,7 @@ const Pagination = ({
     pages.push(i)
   }
 
-  console.log(postsPerPage)
+  console.log(Number(postsPerPage))
 
   return (
     <div className={styles.pagination}>

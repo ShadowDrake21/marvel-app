@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import styles from './CharactersFetching.module.scss'
+import styles from './Characters.module.scss'
 import CharacterCard from '../CharacterCard/CharacterCard'
 import Pagination from '../../CommonComponents/Pagination/Pagination'
 import { fetching } from '../../../services/fetching'
 import { fetchCharacters } from '../../../static/fetchingTypes'
 
-const CharactersFetching = ({ searchTerm }) => {
+const Characters = ({ searchTerm }) => {
   const [characters, setCharacters] = useState([])
   const [isSuccess, setIsSuccess] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
@@ -19,11 +19,11 @@ const CharactersFetching = ({ searchTerm }) => {
   const firstPostIndex = lastPostIndex - postPerPage
   const currentPosts = characters.slice(firstPostIndex, lastPostIndex)
 
-  console.log(characters, searchTerm)
+  console.log(characters, postPerPage)
   return (
     <div className={styles.cards}>
       {!isSuccess && (
-        <p className={styles.fetchError}>
+        <p className="fetchError">
           There was an error while fetching a data. Try one more time
         </p>
       )}
@@ -46,4 +46,4 @@ const CharactersFetching = ({ searchTerm }) => {
   )
 }
 
-export default CharactersFetching
+export default Characters

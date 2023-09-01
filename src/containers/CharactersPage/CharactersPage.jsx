@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import CharactersFetching from '../../components/CharactersPage/CharactersFetching/CharactersFetching'
 import InputUI from '../../components/UI/InputUI/InputUI'
 import TitleUI from '../../components/UI/TitleUI/TitleUI'
+import Characters from '../../components/CharactersPage/Characters/Characters'
 import styles from './CharactersPage.module.scss'
 
 const CharactersPage = () => {
@@ -24,7 +24,7 @@ const CharactersPage = () => {
         onChange={onChange}
         onClick={clearSearch}
       />
-      {value && <CharactersFetching searchTerm={value} />}
+      {value && <Characters searchTerm={value} />}
     </div>
   )
 }
