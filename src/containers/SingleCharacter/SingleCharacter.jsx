@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { fetching } from '../../services/fetching'
 import { fetchSingleCharacter } from '../../static/fetchingTypes'
 import TitleUI from '../../components/UI/TitleUI/TitleUI'
+import SingleCharacterItem from '../../components/SingleCharacter/SingleCharacterItem/SingleCharacterItem'
 import styles from './SingleCharacter.module.scss'
 
 const SingleCharacter = () => {
@@ -15,14 +16,15 @@ const SingleCharacter = () => {
   useEffect(() => {
     fetching(fetchSingleCharacter, setCharacter, setIsSuccess, undefined, id)
   }, [id])
+  console.log(character)
   return (
     <div className="container">
-      <TitleUI text={character.name} />
       {!isSuccess && (
         <p className={styles.fetchError}>
           There was an error while fetching a data. Try one more time
         </p>
       )}
+      {isSuccess && <SingleCharacterItem character={character} />}
     </div>
   )
 }
