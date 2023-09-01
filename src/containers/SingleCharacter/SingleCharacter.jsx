@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetching } from '../../services/fetching'
 import { fetchSingleCharacter } from '../../static/fetchingTypes'
-import TitleUI from '../../components/UI/TitleUI/TitleUI'
 import SingleCharacterItem from '../../components/SingleCharacter/SingleCharacterItem/SingleCharacterItem'
 import styles from './SingleCharacter.module.scss'
 
