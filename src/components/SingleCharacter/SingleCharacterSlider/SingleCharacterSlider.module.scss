@@ -5,21 +5,12 @@
   margin: 10px;
 }
 
-swiper-container {
-  width: 600px !important;
-  height: 290px;
+.slider {
+  width: 600px;
+}
 
-  swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px !important;
-    height: 255px;
-
-    .sliderImg {
-      width: 165px;
-      height: 250px;
-      object-fit: cover;
-    }
-  }
+.sliderImg {
+  width: 180px;
+  height: 280px;
+  object-fit: cover;
 }

@@ -1,19 +1,29 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { fetching } from '../../../services/fetching'
-import { fetchSingleCharacterSlider } from '../../../static/fetchingTypes'
-import { register } from 'swiper/element/bundle'
+import {
+  fetchSingleCharacterSlider,
+  fetchSingleCharacterSliderComics,
+} from '../../../static/fetchingTypes'
 import { image_full } from '../../../services/imageSizes'
 import styles from './SingleCharacterSlider.module.scss'
-
-register()
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 const SingleCharacterSlider = ({ sliderType }) => {
-  const swiperElRef = useRef(null)
   const [characterFeatures, setCharacterFeatures] = useState([])
   const [isSuccess, setIsSuccess] = useState(false)
   const { id } = useParams()
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  }
 
   useEffect(() => {
     fetching(
@@ -24,41 +34,36 @@ const SingleCharacterSlider = ({ sliderType }) => {
       id,
       sliderType
     )
-
-    swiperElRef.current.addEventListener('progress', (e) => {
-      const [swiper, progress] = e.detail
-      console.log(progress)
-    })
-
-    swiperElRef.current.addEventListener('slidechange', (e) => {
-      console.log('slide changed')
-    })
-  }, [])
+  }, [id, sliderType])
 
   console.log(characterFeatures)
 
   return (
-    <div>
+    <div className={styles.slider}>
       <h3 className={styles.title}>{sliderType}</h3>
-      <swiper-container ref={swiperElRef} slides-per-view="3" pagination="true">
+      <Slider {...settings}>
         {characterFeatures.map((feature) => (
-          <swiper-slide key={feature.id}>
-            <Link to="/">
-              <img
-                src={
-                  feature.images[0].path +
-                  '/' +
-                  image_full +
-                  '.' +
-                  feature.images[0].extension
-                }
-                alt="img"
-                className={styles.sliderImg}
-              />
-            </Link>
-          </swiper-slide>
+          <Link to="/" key={feature.id}>
+            <img
+              src={
+                sliderType === fetchSingleCharacterSliderComics
+                  ? feature.images[0].path +
+                    '/' +
+                    image_full +
+                    '.' +
+                    feature.images[0].extension
+                  : feature.thumbnail.path +
+                    '/' +
+                    image_full +
+                    '.' +
+                    feature.thumbnail.extension
+              }
+              alt="img"
+              className={styles.sliderImg}
+            />
+          </Link>
         ))}
-      </swiper-container>
+      </Slider>
     </div>
   )
 }

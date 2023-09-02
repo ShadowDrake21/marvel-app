@@ -1,12 +1,12 @@
 .item {
   margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: var(--border-radius-usual);
   .top {
     display: flex;
     padding: 30px;
     max-width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
     color: var(--color-black);
-    border-radius: var(--border-radius-usual);
     gap: 0 30px;
 
     .imgWrapper {
@@ -24,6 +24,9 @@
     }
 
     .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       .text {
         font-size: 18px;
         line-height: 1.5;

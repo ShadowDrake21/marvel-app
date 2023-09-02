@@ -3,7 +3,12 @@ import styles from './SingleCharacterItem.module.scss'
 import { image_full } from '../../../services/imageSizes'
 import TitleUI from '../../UI/TitleUI/TitleUI'
 import SingleCharacterSlider from '../SingleCharacterSlider/SingleCharacterSlider'
-import { fetchSingleCharacterSliderComics } from '../../../static/fetchingTypes'
+import {
+  fetchSingleCharacterSliderComics,
+  fetchSingleCharacterSliderEvents,
+  fetchSingleCharacterSliderSeries,
+  fetchSingleCharacterSliderStories,
+} from '../../../static/fetchingTypes'
 
 const SingleCharacterItem = ({ character }) => {
   const { thumbnail } = character
@@ -24,10 +29,14 @@ const SingleCharacterItem = ({ character }) => {
           <SingleCharacterSlider
             sliderType={fetchSingleCharacterSliderComics}
           />
-          <div className={styles.comics}>comics (slider?)</div>
           <div className={styles.series}>series (slider?)</div>
           <div className={styles.series}>stories (slider?)</div>
         </div>
+      </div>
+      <div className={styles.bottom}>
+        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderEvents} />
+        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderSeries} />
+        {/* <SingleCharacterSlider sliderType={fetchSingleCharacterSliderStories} /> */}
       </div>
     </div>
   )
