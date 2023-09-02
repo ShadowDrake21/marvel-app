@@ -1,0 +1,25 @@
+.title {
+  font-size: 22px;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 10px;
+}
+
+swiper-container {
+  width: 600px !important;
+  height: 290px;
+
+  swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px !important;
+    height: 255px;
+
+    .sliderImg {
+      width: 165px;
+      height: 250px;
+      object-fit: cover;
+    }
+  }
+}
