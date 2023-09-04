@@ -15,7 +15,6 @@ const SingleCharacter = () => {
   useEffect(() => {
     fetching(fetchSingleCharacter, setCharacter, setIsSuccess, undefined, id)
   }, [id])
-  console.log(character)
   return (
     <div className="container">
       {!isSuccess && (

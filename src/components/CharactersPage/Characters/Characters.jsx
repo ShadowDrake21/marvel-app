@@ -19,7 +19,6 @@ const Characters = ({ searchTerm }) => {
   const firstPostIndex = lastPostIndex - postPerPage
   const currentPosts = characters.slice(firstPostIndex, lastPostIndex)
 
-  console.log(characters, postPerPage)
   return (
     <div className={styles.cards}>
       {!isSuccess && (

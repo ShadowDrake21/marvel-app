@@ -88,6 +88,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 input[type='search']::-webkit-search-decoration,
@@ -123,6 +124,10 @@ h6 {
 .slick-next:before {
   color: var(--color-black) !important;
   font-size: 30px !important;
+}
+
+.slick-list {
+  padding-top: 3px !important;
 }
 
 .slick-slide {

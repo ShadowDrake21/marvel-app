@@ -29,14 +29,14 @@ const SingleCharacterItem = ({ character }) => {
           <SingleCharacterSlider
             sliderType={fetchSingleCharacterSliderComics}
           />
-          <div className={styles.series}>series (slider?)</div>
-          <div className={styles.series}>stories (slider?)</div>
         </div>
       </div>
-      <div className={styles.bottom}>
+      <div className={styles.middle}>
         <SingleCharacterSlider sliderType={fetchSingleCharacterSliderEvents} />
         <SingleCharacterSlider sliderType={fetchSingleCharacterSliderSeries} />
-        {/* <SingleCharacterSlider sliderType={fetchSingleCharacterSliderStories} /> */}
+      </div>
+      <div className={styles.bottom}>
+        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderStories} />
       </div>
     </div>
   )
