@@ -3,11 +3,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles/index.scss'
 import HomePage from './containers/HomePage'
-import Header from './components/CommonComponents/Header'
 import CharactersPage from './containers/CharactersPage/CharactersPage'
 import App from './containers/App/App'
 import { ThemeProvider } from './context/ThemeProvider'
 import SingleCharacter from './containers/SingleCharacter/SingleCharacter'
+import ComicsPage from './containers/ComicsPage/ComicsPage'
 
 const router = createBrowserRouter([
   {
@@ -15,10 +15,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Navigate to="/home" replace />,
+        element: <Navigate to="home" replace />,
       },
       {
-        path: '/home',
+        path: 'home',
         element: <HomePage />,
       },
       {
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
         element: <CharactersPage />,
       },
       { path: 'characters/:id', element: <SingleCharacter /> },
+      {
+        path: 'comics',
+        element: <ComicsPage />,
+      },
     ],
   },
 ])

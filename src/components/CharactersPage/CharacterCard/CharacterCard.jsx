@@ -17,4 +17,5 @@ const CharacterCard = ({ ...character }) => {
   )
 }
 
+// РЕФАКТОРИНГ
 export default CharacterCard

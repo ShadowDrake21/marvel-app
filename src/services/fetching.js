@@ -1,5 +1,5 @@
 import MD5 from 'crypto-js/md5'
-import { fetchCharacters, fetchSingleCharacter } from '../static/fetchingTypes'
+import { fetchSingleCharacter } from '../static/fetchingTypes'
 
 const API_URL = process.env.REACT_APP_BASE_URL
 
@@ -40,6 +40,10 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       }
 
       url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
+    case 'comics':
+      url = `${API_URL}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${searchTerm}`
       break
 
     default:
