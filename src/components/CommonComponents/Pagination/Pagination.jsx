@@ -1,4 +1,5 @@
 import React from 'react'
+import cn from 'classnames'
 import styles from './pagination.module.scss'
 
 const Pagination = ({
@@ -6,17 +7,16 @@ const Pagination = ({
   postsPerPage,
   setCurrentPage,
   currentPage,
+  propClass = '',
 }) => {
   let pages = []
 
-  for (let i = 1; i <= Math.ceil(totalPosts / 10); i++) {
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pages.push(i)
   }
 
-  console.log(postsPerPage)
-
   return (
-    <div className={styles.pagination}>
+    <div className={cn(styles.pagination, propClass)}>
       {pages.map((page, index) => {
         return (
           <button
