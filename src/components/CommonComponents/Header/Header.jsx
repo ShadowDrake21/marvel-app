@@ -8,18 +8,18 @@ const Header = () => {
     <div className={styles.header}>
       <div className="container">
         <div className={styles.header__inner}>
-          <NavLink to="/home" className={styles.logo__link}>
+          <NavLink to="home" className={styles.logo__link}>
             <img src={logo} className={styles.logo} alt="logo" />
           </NavLink>
           <ul className={styles.list__container}>
             <li>
-              <HeaderLink text="Home" path="/home" />
+              <HeaderLink text="Home" path="home" />
             </li>
             <li>
               <HeaderLink text="Characters" path="characters" />
             </li>
             <li>
-              <HeaderLink text="Comics" path="/" />
+              <HeaderLink text="Comics" path="comics" />
             </li>
             <li>
               <HeaderLink text="Creators" path="/" />
