@@ -11,7 +11,7 @@ const SearchResults = ({
   component: Component,
 }) => {
   const [objects, setObjects] = useState([])
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [postPerPage, setPostPerPage] = useState(10)
 
@@ -36,7 +36,7 @@ const SearchResults = ({
         currentPosts.map((character) => (
           <Component key={character.id} {...character} />
         ))}
-      {objects.length === 0 && (
+      {objects.length === 0 && isSuccess && (
         <p className={styles.fetchError}>No results. Try another query</p>
       )}
       {objects.length > 10 && (

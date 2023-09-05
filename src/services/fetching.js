@@ -43,7 +43,7 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       break
 
     case 'comics':
-      url = `${API_URL}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${searchTerm}`
+      url = `${API_URL}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&titleStartsWith=${searchTerm}`
       break
 
     default:
@@ -71,8 +71,8 @@ export const fetching = async (
     } else {
       setObject(dataArr)
     }
-    setBoolean(true)
   } catch (err) {
+    setBoolean(false)
     console.error(err)
     return
   }
