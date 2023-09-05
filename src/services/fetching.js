@@ -71,6 +71,7 @@ export const fetching = async (
     } else {
       setObject(dataArr)
     }
+    setBoolean(true)
   } catch (err) {
     setBoolean(false)
     console.error(err)

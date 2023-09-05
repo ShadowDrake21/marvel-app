@@ -10,19 +10,15 @@ import styles from './SingleCharacter.module.scss'
 const SingleCharacter = () => {
   const { id } = useParams()
   const [character, setCharacter] = useState({})
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    fetching(fetchSingleCharacter, setCharacter, setIsSuccess, undefined, id)
+    fetching(fetchSingleCharacter, setCharacter, setLoading, undefined, id)
   }, [id])
   return (
     <div className="container">
-      {!isSuccess && (
-        <p className={styles.fetchError}>
-          There was an error while fetching a data. Try one more time
-        </p>
-      )}
-      {isSuccess && <SingleCharacterItem character={character} />}
+      {!loading && <p className="fetchError">Loading...</p>}
+      {loading && <SingleCharacterItem character={character} />}
     </div>
   )
 }

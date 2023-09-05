@@ -11,7 +11,7 @@ const SearchResults = ({
   component: Component,
 }) => {
   const [objects, setObjects] = useState([])
-  const [isSuccess, setIsSuccess] = useState(true)
+  const [isSuccess, setIsSuccess] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [postPerPage, setPostPerPage] = useState(10)
 
@@ -27,10 +27,8 @@ const SearchResults = ({
 
   return (
     <div className={styles.cards}>
-      {!isSuccess && (
-        <p className="fetchError">
-          There was an error while fetching a data. Try one more time
-        </p>
+      {!isSuccess && objects.length === 0 && (
+        <p className="fetchError">Loading...</p>
       )}
       {isSuccess &&
         currentPosts.map((character) => (
