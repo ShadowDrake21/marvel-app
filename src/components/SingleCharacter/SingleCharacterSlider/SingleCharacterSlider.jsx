@@ -13,6 +13,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Pagination from '../../CommonComponents/Pagination/Pagination'
+import { RotatingLines } from 'react-loader-spinner'
 
 const SingleCharacterSlider = ({ sliderType }) => {
   const [characterFeatures, setCharacterFeatures] = useState([])
@@ -95,7 +96,19 @@ const SingleCharacterSlider = ({ sliderType }) => {
         />
       )}
 
-      {!characterFeatures.length && (
+      {!characterFeatures.length && !isSuccess && (
+        <div className={styles.loader}>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.85"
+            width="76"
+            visible={true}
+          />
+        </div>
+      )}
+
+      {!characterFeatures.length && isSuccess && (
         <p className={styles.emptySlider}>There is no {sliderType}</p>
       )}
     </div>

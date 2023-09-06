@@ -73,7 +73,7 @@ export const fetching = async (
     }
     setBoolean(true)
   } catch (err) {
-    setBoolean(false)
+    setBoolean('error')
     console.error(err)
     return
   }

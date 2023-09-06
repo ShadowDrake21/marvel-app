@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { fetching } from '../../../../services/fetching'
 import styles from './SearchResults.module.scss'
 import Pagination from '../../Pagination/Pagination'
+import { ProgressBar, RotatingLines } from 'react-loader-spinner'
 
 const SearchResults = ({
   fetchingCriteria,
@@ -28,14 +29,23 @@ const SearchResults = ({
   return (
     <div className={styles.cards}>
       {!isSuccess && objects.length === 0 && (
-        <p className="fetchError">Loading...</p>
+        <RotatingLines
+          strokeColor="red"
+          strokeWidth="5"
+          animationDuration="0.75"
+          width="76"
+          visible={true}
+        />
       )}
       {isSuccess &&
         currentPosts.map((character) => (
           <Component key={character.id} {...character} />
         ))}
-      {objects.length === 0 && isSuccess && (
+      {objects.length === 0 && isSuccess === true && (
         <p className={styles.fetchError}>No results. Try another query</p>
+      )}
+      {isSuccess === 'error' && (
+        <p className="fetchError">ERROR: Failed to fetch. Try one more time</p>
       )}
       {objects.length > 10 && (
         <Pagination
