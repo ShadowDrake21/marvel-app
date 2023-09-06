@@ -10,8 +10,8 @@ import {
   fetchSingleCharacterSliderStories,
 } from '../../../static/fetchingTypes'
 
-const SingleCharacterItem = ({ character }) => {
-  const { thumbnail } = character
+const SingleCharacterItem = ({ element }) => {
+  const { thumbnail } = element
   const imgPath = thumbnail.path + '/' + image_full + '.' + thumbnail.extension
   return (
     <div className={styles.item}>
@@ -20,10 +20,10 @@ const SingleCharacterItem = ({ character }) => {
           <img className={styles.img} src={imgPath} alt="img" />
         </div>
         <div className={styles.info}>
-          <TitleUI text={character.name} />
+          <TitleUI text={element.name} />
           <p className={styles.text}>
-            {character.description
-              ? character.description
+            {element.description
+              ? element.description
               : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, possimus natus facere quia tenetur maxime. Saepe debitis, possimus enim voluptatem veniam laudantium hic mollitia asperiores quas modi provident, nisi numquam quis architecto quasi ipsam! Provident itaque rem in nemo voluptatum nobis atque assumenda, aperiam quidem iure! '}
           </p>
           <SingleCharacterSlider

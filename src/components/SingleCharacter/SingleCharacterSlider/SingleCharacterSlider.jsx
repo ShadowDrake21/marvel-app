@@ -38,7 +38,15 @@ const SingleCharacterSlider = ({ sliderType }) => {
   const currentPosts = characterFeatures.slice(firstPostIndex, lastPostIndex)
 
   const numberOfSlides = () => {
-    return characterFeatures.length >= 3 ? 3 : 2
+    if (characterFeatures.length >= 3) {
+      return 3
+    }
+    if (characterFeatures.length === 2) {
+      return 2
+    }
+    if (characterFeatures.length === 1) {
+      return 1
+    }
   }
 
   const settings = {
