@@ -1,15 +1,14 @@
 import React from 'react'
-import styles from './SingleElement.module.scss'
-import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { fetching } from '../../../services/fetching'
-import { fetchSingleComics } from '../../../static/fetchingTypes'
 import { RotatingLines } from 'react-loader-spinner'
+import styles from './SingleElement.module.scss'
 
 const SingleElement = ({ id, fetchCriteria, component: Component }) => {
   const [element, setElement] = useState({})
   const [loading, setLoading] = useState(false)
+  console.log(element)
 
   useEffect(() => {
     fetching(fetchCriteria, setElement, setLoading, undefined, id)

@@ -12,12 +12,12 @@ const SearchResults = ({
   component: Component,
 }) => {
   const [objects, setObjects] = useState([])
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [postPerPage, setPostPerPage] = useState(10)
 
   useEffect(() => {
-    fetching(fetchingCriteria, setObjects, setIsSuccess, searchTerm)
+    fetching(fetchingCriteria, setObjects, setLoading, searchTerm)
   }, [fetchingCriteria, searchTerm])
 
   const lastPostIndex = currentPage * postPerPage
@@ -28,7 +28,7 @@ const SearchResults = ({
 
   return (
     <div className={styles.cards}>
-      {!isSuccess && objects.length === 0 && (
+      {!loading && objects.length === 0 && (
         <RotatingLines
           strokeColor="red"
           strokeWidth="5"
@@ -37,14 +37,14 @@ const SearchResults = ({
           visible={true}
         />
       )}
-      {isSuccess &&
+      {loading &&
         currentPosts.map((character) => (
           <Component key={character.id} {...character} />
         ))}
-      {objects.length === 0 && isSuccess === true && (
+      {objects.length === 0 && loading === true && (
         <p className={styles.fetchError}>No results. Try another query</p>
       )}
-      {isSuccess === 'error' && (
+      {loading === 'error' && (
         <p className="fetchError">ERROR: Failed to fetch. Try one more time</p>
       )}
       {objects.length > 10 && (

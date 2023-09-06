@@ -1,21 +1,20 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { fetching } from '../../../services/fetching'
+import Slider from 'react-slick'
+import { image_full } from '../../../services/imageSizes'
 import {
   fetchSingleCharacterSlider,
   fetchSingleCharacterSliderComics,
+  fetchSingleCharacterSliderStories as stories,
 } from '../../../static/fetchingTypes'
-import { fetchSingleCharacterSliderStories as stories } from '../../../static/fetchingTypes'
-import { image_full } from '../../../services/imageSizes'
-import styles from './SingleCharacterSlider.module.scss'
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import styles from './SliderUI.module.scss'
 import Pagination from '../../CommonComponents/Pagination/Pagination'
 import { RotatingLines } from 'react-loader-spinner'
 
-const SingleCharacterSlider = ({ sliderType }) => {
+const SliderUI = ({ sliderType }) => {
   const [characterFeatures, setCharacterFeatures] = useState([])
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
@@ -123,4 +122,4 @@ const SingleCharacterSlider = ({ sliderType }) => {
   )
 }
 
-export default SingleCharacterSlider
+export default SliderUI

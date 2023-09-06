@@ -12,6 +12,7 @@ import {
 
 const SingleCharacterItem = ({ element }) => {
   const { thumbnail } = element
+  console.log(element)
   const imgPath = thumbnail.path + '/' + image_full + '.' + thumbnail.extension
   return (
     <div className={styles.item}>
