@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { fetching } from '../../../../services/fetching'
 import styles from './SearchResults.module.scss'
 import Pagination from '../../Pagination/Pagination'
-import { ProgressBar, RotatingLines } from 'react-loader-spinner'
+import { RotatingLines } from 'react-loader-spinner'
 
 const SearchResults = ({
   fetchingCriteria,

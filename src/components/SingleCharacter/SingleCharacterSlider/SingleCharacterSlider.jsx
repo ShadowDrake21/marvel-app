@@ -97,7 +97,7 @@ const SingleCharacterSlider = ({ sliderType }) => {
       )}
 
       {!characterFeatures.length && !isSuccess && (
-        <div className={styles.loader}>
+        <div className="loader">
           <RotatingLines
             strokeColor="grey"
             strokeWidth="5"

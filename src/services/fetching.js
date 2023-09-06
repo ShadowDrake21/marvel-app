@@ -46,6 +46,10 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       url = `${API_URL}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&titleStartsWith=${searchTerm}`
       break
 
+    case 'singleComics':
+      url = `${API_URL}/v1/public/comics/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
     default:
       break
   }

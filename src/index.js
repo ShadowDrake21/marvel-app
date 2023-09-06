@@ -8,6 +8,7 @@ import App from './containers/App/App'
 import { ThemeProvider } from './context/ThemeProvider'
 import SingleCharacter from './containers/SingleCharacter/SingleCharacter'
 import ComicsPage from './containers/ComicsPage/ComicsPage'
+import SingleComics from './containers/SingleComics/SingleComics'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
         path: 'comics',
         element: <ComicsPage />,
       },
+      { path: 'comics/:id', element: <SingleComics /> },
     ],
   },
 ])
