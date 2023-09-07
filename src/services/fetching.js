@@ -53,6 +53,27 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       url = `${API_URL}/v1/public/comics/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
       break
 
+    case 'singleComicsSlider':
+      url = `${API_URL}/v1/public/comics/${id}/`
+
+      if (sliderType === 'creators') {
+        url += 'creators'
+      }
+
+      if (sliderType === 'characters') {
+        url += 'characters'
+      }
+
+      if (sliderType === 'events') {
+        url += 'events'
+      }
+
+      if (sliderType === 'stories') {
+        url += 'stories'
+      }
+
+      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
     default:
       break
   }

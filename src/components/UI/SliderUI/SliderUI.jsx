@@ -8,6 +8,8 @@ import { image_full } from '../../../services/imageSizes'
 import {
   fetchSingleCharacterSlider,
   fetchSingleCharacterSliderComics,
+  fetchSingleComicsSlider,
+  fetchSingleComicsSliderCreators,
   fetchSingleCharacterSliderStories as stories,
 } from '../../../static/fetchingTypes'
 import styles from './SliderUI.module.scss'
@@ -23,7 +25,7 @@ const SliderUI = ({ sliderType }) => {
 
   useEffect(() => {
     fetching(
-      fetchSingleCharacterSlider,
+      fetchSingleComicsSlider,
       setCharacterFeatures,
       setLoading,
       null,

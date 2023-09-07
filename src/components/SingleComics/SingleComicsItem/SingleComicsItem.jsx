@@ -5,6 +5,14 @@ import cn from 'classnames'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import styles from './SingleComicsItem.module.scss'
+import SliderUI from '../../UI/SliderUI/SliderUI'
+import {
+  fetchSingleComicsSliderCharacters,
+  fetchSingleComicsSliderCreators,
+  fetchSingleComicsSliderEvents,
+  fetchSingleComicsSliderSeries,
+  fetchSingleComicsSliderStories,
+} from '../../../static/fetchingTypes'
 
 dayjs.extend(relativeTime)
 
@@ -119,18 +127,16 @@ const SingleComicsItem = ({ element }) => {
               <LinkComics url={readerUrl} text="reader" />
             </div>
           </div>
-          {/* <SingleCharacterSlider
-            sliderType={fetchSingleCharacterSliderComics}
-          /> */}
+          <SliderUI sliderType={fetchSingleComicsSliderCreators} />
         </div>
       </div>
-      {/* <div className={styles.middle}>
-        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderEvents} />
-        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderSeries} />
+      <div className={styles.middle}>
+        <SliderUI sliderType={fetchSingleComicsSliderCharacters} />
+        <SliderUI sliderType={fetchSingleComicsSliderEvents} />
       </div>
       <div className={styles.bottom}>
-        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderStories} />
-      </div> */}
+        <SliderUI sliderType={fetchSingleComicsSliderStories} />
+      </div>
     </div>
   )
 }
