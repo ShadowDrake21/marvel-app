@@ -8,26 +8,62 @@ import styles from './SingleComicsItem.module.scss'
 
 dayjs.extend(relativeTime)
 
+const LinkComics = ({ url, text }) => {
+  return (
+    <a
+      className={url || styles.disabled}
+      href={url || '#'}
+      target="_blank"
+      rel="noreferrer"
+    >
+      {text}
+    </a>
+  )
+}
+
 const SingleComicsItem = ({ element }) => {
   const { thumbnail } = element
   console.log(element)
   const imgPath = thumbnail.path + '/' + image_full + '.' + thumbnail.extension
 
   const dateExtracting = (date) => {
-    return new Date(
-      parseInt(date.slice(0, 4)),
-      parseInt(date.slice(5, 7)) - 1,
-      parseInt(date.slice(8, 10))
-    )
+    return date
+      ? new Date(
+          parseInt(date.slice(0, 4)),
+          parseInt(date.slice(5, 7)) - 1,
+          parseInt(date.slice(8, 10))
+        )
+      : false
   }
 
   const dateShortFormatting = (date) => {
-    return dayjs(date).format('MM/DD/YYYY')
+    return date ? dayjs(date).format('MM/DD/YYYY') : 'Unknown date'
   }
 
   const dateRelativeFormatting = (date) => {
-    return dayjs(date).fromNow()
+    return date ? dayjs(date).fromNow() : 'Unknown date'
   }
+
+  // date checking
+  const findRequiredProperty = (requiredProperty, object) => {
+    for (const [key, value] of Object.entries(object)) {
+      const key = Object.keys(value)[1]
+      if (value.type === requiredProperty) {
+        return value[key]
+      }
+    }
+    return false
+  }
+
+  const onSaleDate = findRequiredProperty('onsaleDate', element.dates)
+  const digitalPurchaseDate = findRequiredProperty(
+    'digitalPurchaseDate',
+    element.dates
+  )
+
+  const detailUrl = findRequiredProperty('detail', element.urls)
+  const purchaseUrl = findRequiredProperty('purchase', element.urls)
+  const readerUrl = findRequiredProperty('reader', element.urls)
 
   return (
     <div className={styles.item}>
@@ -46,45 +82,41 @@ const SingleComicsItem = ({ element }) => {
             <div className={cn(styles.editionDetail, styles.detailsItem)}>
               <p className={styles.format}>
                 format:
-                <span>{element.format}</span>
+                <span>{element.format || 'Unknown'}</span>
               </p>
               <p className={styles.pageCount}>
                 page count:
-                <span>{element.pageCount}</span>
+                <span>{element.pageCount || 'Unknown'}</span>
               </p>
             </div>
             <div className={cn(styles.detailsDates, styles.detailsItem)}>
               <p className={styles.dataOnSale}>
                 onsale date:
                 <span>
-                  {dateShortFormatting(dateExtracting(element.dates[0].date))}
-                  {', '}
-                  {dateRelativeFormatting(
-                    dateExtracting(element.dates[0].date)
-                  )}
+                  {dateShortFormatting(dateExtracting(onSaleDate))}
+                  {onSaleDate &&
+                    ', ' + dateRelativeFormatting(dateExtracting(onSaleDate))}
                 </span>
               </p>
               <p className={styles.dataDigitalPurchase}>
                 digital purchase date:
                 <span>
-                  {dateShortFormatting(dateExtracting(element.dates[3].date))}
-                  {', '}
-                  {dateRelativeFormatting(
-                    dateExtracting(element.dates[3].date)
-                  )}
+                  {dateShortFormatting(digitalPurchaseDate)}
+
+                  {digitalPurchaseDate &&
+                    ', ' +
+                      dateRelativeFormatting(
+                        dateExtracting(digitalPurchaseDate)
+                      )}
                 </span>
               </p>
             </div>
             <div className={cn(styles.links, styles.detailsItem)}>
-              <a className={styles.detailsLink} href={element.urls[0].url}>
-                details
-              </a>
-              <a className={styles.purchaseLink} href={element.urls[1].url}>
-                purchase
-              </a>
-              <a className={styles.readerLink} href={element.urls[2].url}>
-                reader
-              </a>
+              <LinkComics url={detailUrl} text="details" />
+
+              <LinkComics url={purchaseUrl} text="purchase" />
+
+              <LinkComics url={readerUrl} text="reader" />
             </div>
           </div>
           {/* <SingleCharacterSlider
