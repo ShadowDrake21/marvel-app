@@ -4,11 +4,13 @@ import { image_full } from '../../../services/imageSizes'
 import TitleUI from '../../UI/TitleUI/TitleUI'
 import SingleCharacterSlider from '../SingleCharacterSlider/SingleCharacterSlider'
 import {
+  fetchSingleCharacterSlider,
   fetchSingleCharacterSliderComics,
   fetchSingleCharacterSliderEvents,
   fetchSingleCharacterSliderSeries,
   fetchSingleCharacterSliderStories,
 } from '../../../static/fetchingTypes'
+import SliderUI from '../../UI/SliderUI/SliderUI'
 
 const SingleCharacterItem = ({ element }) => {
   const { thumbnail } = element
@@ -27,17 +29,27 @@ const SingleCharacterItem = ({ element }) => {
               ? element.description
               : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, possimus natus facere quia tenetur maxime. Saepe debitis, possimus enim voluptatem veniam laudantium hic mollitia asperiores quas modi provident, nisi numquam quis architecto quasi ipsam! Provident itaque rem in nemo voluptatum nobis atque assumenda, aperiam quidem iure! '}
           </p>
-          <SingleCharacterSlider
+          <SliderUI
+            fetchingCriteria={fetchSingleCharacterSlider}
             sliderType={fetchSingleCharacterSliderComics}
           />
         </div>
       </div>
       <div className={styles.middle}>
-        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderEvents} />
-        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderSeries} />
+        <SliderUI
+          fetchingCriteria={fetchSingleCharacterSlider}
+          sliderType={fetchSingleCharacterSliderEvents}
+        />
+        <SliderUI
+          fetchingCriteria={fetchSingleCharacterSlider}
+          sliderType={fetchSingleCharacterSliderSeries}
+        />
       </div>
       <div className={styles.bottom}>
-        <SingleCharacterSlider sliderType={fetchSingleCharacterSliderStories} />
+        <SliderUI
+          fetchingCriteria={fetchSingleCharacterSlider}
+          sliderType={fetchSingleCharacterSliderStories}
+        />
       </div>
     </div>
   )

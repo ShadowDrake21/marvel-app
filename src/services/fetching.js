@@ -43,6 +43,10 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       }
 
       url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+
+      if (sliderType === 'comics') {
+        console.log(url)
+      }
       break
 
     case 'comics':

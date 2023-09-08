@@ -5,47 +5,34 @@ import { Link, useParams } from 'react-router-dom'
 import { fetching } from '../../../services/fetching'
 import Slider from 'react-slick'
 import { image_full } from '../../../services/imageSizes'
-import {
-  fetchSingleCharacterSlider,
-  fetchSingleCharacterSliderComics,
-  fetchSingleComicsSlider,
-  fetchSingleComicsSliderCreators,
-  fetchSingleCharacterSliderStories as stories,
-} from '../../../static/fetchingTypes'
+import { fetchSingleCharacterSliderComics } from '../../../static/fetchingTypes'
 import styles from './SliderUI.module.scss'
 import Pagination from '../../CommonComponents/Pagination/Pagination'
 import { RotatingLines } from 'react-loader-spinner'
 
-const SliderUI = ({ sliderType }) => {
-  const [characterFeatures, setCharacterFeatures] = useState([])
+const SliderUI = ({ fetchingCriteria, sliderType }) => {
+  const [objects, setObjects] = useState([])
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage, setPostsPerPage] = useState(5)
   const { id } = useParams()
 
   useEffect(() => {
-    fetching(
-      fetchSingleComicsSlider,
-      setCharacterFeatures,
-      setLoading,
-      null,
-      id,
-      sliderType
-    )
-  }, [id, sliderType])
+    fetching(fetchingCriteria, setObjects, setLoading, null, id, sliderType)
+  }, [id, sliderType, fetchingCriteria])
 
   const lastPostIndex = currentPage * postsPerPage
   const firstPostIndex = lastPostIndex - postsPerPage
-  const currentPosts = characterFeatures.slice(firstPostIndex, lastPostIndex)
+  const currentPosts = objects.slice(firstPostIndex, lastPostIndex)
 
   const numberOfSlides = () => {
-    if (characterFeatures.length >= 3) {
+    if (objects.length >= 3) {
       return 3
     }
-    if (characterFeatures.length === 2) {
+    if (objects.length === 2) {
       return 2
     }
-    if (characterFeatures.length === 1) {
+    if (objects.length === 1) {
       return 1
     }
   }
@@ -61,13 +48,14 @@ const SliderUI = ({ sliderType }) => {
   return (
     <div className={styles.slider}>
       <h3 className={styles.title}>{sliderType}</h3>
-      {characterFeatures.length > 0 && sliderType !== stories && (
+      {objects.length > 0 && sliderType !== 'stories' && (
         <Slider {...settings}>
-          {characterFeatures.map((feature) => (
+          {objects.map((feature) => (
             <Link to="/" key={feature.id} className={styles.sliderItem}>
               <img
                 src={
-                  sliderType === fetchSingleCharacterSliderComics
+                  sliderType === fetchSingleCharacterSliderComics &&
+                  feature.images.length > 0
                     ? feature.images[0].path +
                       '/' +
                       image_full +
@@ -88,16 +76,16 @@ const SliderUI = ({ sliderType }) => {
       )}
       <div className={styles.storiesWrapper}>
         {loading &&
-          sliderType === stories &&
+          sliderType === 'stories' &&
           currentPosts.map((feature) => (
             <Link to="/" className={styles.storiesItem} key={feature.id}>
               {feature.title}
             </Link>
           ))}
       </div>
-      {characterFeatures.length > postsPerPage && sliderType === stories && (
+      {objects.length > postsPerPage && sliderType === 'stories' && (
         <Pagination
-          totalPosts={characterFeatures.length}
+          totalPosts={objects.length}
           postsPerPage={postsPerPage}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
@@ -105,7 +93,7 @@ const SliderUI = ({ sliderType }) => {
         />
       )}
 
-      {!characterFeatures.length && !loading && (
+      {!objects.length && !loading && (
         <div className="loader">
           <RotatingLines
             strokeColor="grey"
@@ -117,7 +105,7 @@ const SliderUI = ({ sliderType }) => {
         </div>
       )}
 
-      {!characterFeatures.length && loading && (
+      {!objects.length && loading && (
         <p className={styles.emptySlider}>There is no {sliderType}</p>
       )}
     </div>
