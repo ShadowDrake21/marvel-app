@@ -1,7 +1,6 @@
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './styles/index.scss'
 import HomePage from './containers/HomePage'
 import CharactersPage from './containers/CharactersPage/CharactersPage'
 import App from './containers/App/App'
@@ -9,6 +8,8 @@ import { ThemeProvider } from './context/ThemeProvider'
 import SingleCharacter from './containers/SingleCharacter/SingleCharacter'
 import ComicsPage from './containers/ComicsPage/ComicsPage'
 import SingleComics from './containers/SingleComics/SingleComics'
+import CreatorsPage from './containers/CreatorsPage/CreatorsPage'
+import './styles/index.scss'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         element: <ComicsPage />,
       },
       { path: 'comics/:id', element: <SingleComics /> },
+      {
+        path: 'creators',
+        element: <CreatorsPage />,
+      },
     ],
   },
 ])
