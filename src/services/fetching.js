@@ -1,5 +1,8 @@
 import MD5 from 'crypto-js/md5'
-import { fetchSingleCharacter } from '../static/fetchingTypes'
+import {
+  fetchSingleCharacter,
+  fetchSingleComics,
+} from '../static/fetchingTypes'
 
 const API_URL = process.env.REACT_APP_BASE_URL
 
@@ -40,12 +43,41 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       }
 
       url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+
+      if (sliderType === 'comics') {
+        console.log(url)
+      }
       break
 
     case 'comics':
       url = `${API_URL}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&titleStartsWith=${searchTerm}`
       break
 
+    case 'singleComics':
+      url = `${API_URL}/v1/public/comics/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
+    case 'singleComicsSlider':
+      url = `${API_URL}/v1/public/comics/${id}/`
+
+      if (sliderType === 'creators') {
+        url += 'creators'
+      }
+
+      if (sliderType === 'characters') {
+        url += 'characters'
+      }
+
+      if (sliderType === 'events') {
+        url += 'events'
+      }
+
+      if (sliderType === 'stories') {
+        url += 'stories'
+      }
+
+      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
     default:
       break
   }
@@ -66,13 +98,14 @@ export const fetching = async (
     const response = await fetch(url)
     const dataObj = await response.json()
     const dataArr = dataObj.data.results
-    if (type === fetchSingleCharacter) {
+    if (type === fetchSingleCharacter || type === fetchSingleComics) {
       setObject(...dataArr)
     } else {
       setObject(dataArr)
     }
+    setBoolean(true)
   } catch (err) {
-    setBoolean(false)
+    setBoolean('error')
     console.error(err)
     return
   }
