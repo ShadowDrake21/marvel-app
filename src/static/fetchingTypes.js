@@ -4,6 +4,7 @@ export const fetchSingleCharacterSlider = 'singleCharacterSlider'
 export const fetchComics = 'comics'
 export const fetchSingleComics = 'singleComics'
 export const fetchSingleComicsSlider = 'singleComicsSlider'
+export const fetchCreators = 'creators'
 
 export const fetchSingleCharacterSliderEvents = 'events'
 export const fetchSingleCharacterSliderStories = 'stories'

@@ -22,16 +22,16 @@ const Header = () => {
               <HeaderLink text="Comics" path="comics" />
             </li>
             <li>
-              <HeaderLink text="Creators" path="/" />
+              <HeaderLink text="Creators" path="creators" />
             </li>
             <li>
-              <HeaderLink text="Home" path="/" />
+              <HeaderLink text="Events" path="/" />
             </li>
             <li>
-              <HeaderLink text="Home" path="/" />
+              <HeaderLink text="Series" path="/" />
             </li>
             <li>
-              <HeaderLink text="Home" path="/" />
+              <HeaderLink text="Stories" path="/" />
             </li>
           </ul>
         </div>
