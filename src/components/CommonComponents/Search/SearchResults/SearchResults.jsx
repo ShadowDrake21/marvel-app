@@ -50,7 +50,7 @@ const SearchResults = ({
       {objects.length > 10 && (
         <Pagination
           totalPosts={objects.length}
-          postPerPage={postPerPage}
+          postsPerPage={postPerPage}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
         />
