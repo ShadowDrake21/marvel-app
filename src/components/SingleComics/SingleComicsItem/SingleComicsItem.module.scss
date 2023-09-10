@@ -30,6 +30,10 @@
       font-size: var(--font-size-subheader);
       line-height: 1.5;
 
+      .text {
+        text-align: center;
+      }
+
       .details {
         width: 100%;
         display: flex;

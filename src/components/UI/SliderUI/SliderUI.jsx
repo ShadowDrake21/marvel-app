@@ -79,7 +79,7 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
           sliderType === 'stories' &&
           currentPosts.map((feature) => (
             <Link to="/" className={styles.storiesItem} key={feature.id}>
-              {feature.title}
+              {feature.title || 'Unknown story'}
             </Link>
           ))}
       </div>
