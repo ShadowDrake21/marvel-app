@@ -25,7 +25,7 @@ const Header = () => {
               <HeaderLink text="Creators" path="creators" />
             </li>
             <li>
-              <HeaderLink text="Events" path="/" />
+              <HeaderLink text="Events" path="events" />
             </li>
             <li>
               <HeaderLink text="Series" path="/" />

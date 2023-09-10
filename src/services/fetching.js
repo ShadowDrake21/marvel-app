@@ -113,6 +113,10 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
       break
 
+    case 'events':
+      url = `${API_URL}/v1/public/events?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${searchTerm}`
+      break
+
     default:
       break
   }
@@ -133,6 +137,7 @@ export const fetching = async (
     const response = await fetch(url)
     const dataObj = await response.json()
     const dataArr = dataObj.data.results
+    // refactoring!!!
     if (
       type === fetchSingleCharacter ||
       type === fetchSingleComics ||
