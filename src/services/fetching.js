@@ -149,6 +149,10 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
       break
 
+    case 'series':
+      url = `${API_URL}/v1/public/series?ts=${ts}&apikey=${publicKey}&hash=${hash}&titleStartsWith=${searchTerm}`
+      break
+
     default:
       break
   }

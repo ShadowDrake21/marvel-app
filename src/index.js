@@ -13,6 +13,7 @@ import './styles/index.scss'
 import SingleCreator from './containers/SingleCreator/SingleCreator'
 import EventsPage from './containers/EventsPage/EventsPage'
 import SingleEvent from './containers/SingleEvent/SingleEvent'
+import SeriesPage from './containers/SeriesPage/SeriesPage'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         element: <EventsPage />,
       },
       { path: 'events/:id', element: <SingleEvent /> },
+      {
+        path: 'series',
+        element: <SeriesPage />,
+      },
     ],
   },
 ])
