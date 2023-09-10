@@ -3,9 +3,8 @@ import SearchResultsCard from '../../CommonComponents/Search/SearchResultsCard/S
 import styles from './CreatorCard.module.scss'
 
 const CreatorCard = ({ ...creator }) => {
-  const { id, firstName, lastName, thumbnail } = creator
-  const name = lastName ? `${firstName} ${lastName}` : `${firstName}`
-  return <SearchResultsCard id={id} name={name} thumbnail={thumbnail} />
+  const { id, fullName, thumbnail } = creator
+  return <SearchResultsCard id={id} name={fullName} thumbnail={thumbnail} />
 }
 
 export default CreatorCard

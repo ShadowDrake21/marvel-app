@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './SingleCharacterItem.module.scss'
 import { image_full } from '../../../services/imageSizes'
 import TitleUI from '../../UI/TitleUI/TitleUI'
+import SliderUI from '../../UI/SliderUI/SliderUI'
 import SingleCharacterSlider from '../SingleCharacterSlider/SingleCharacterSlider'
 import {
   fetchSingleCharacterSlider,
@@ -10,11 +10,10 @@ import {
   fetchSingleCharacterSliderSeries,
   fetchSingleCharacterSliderStories,
 } from '../../../static/fetchingTypes'
-import SliderUI from '../../UI/SliderUI/SliderUI'
+import styles from './SingleCharacterItem.module.scss'
 
 const SingleCharacterItem = ({ element }) => {
   const { thumbnail } = element
-  console.log(element)
   const imgPath = thumbnail.path + '/' + image_full + '.' + thumbnail.extension
   return (
     <div className={styles.item}>
