@@ -11,6 +11,7 @@ export const fetchSingleCreatorSlider = 'singleCreatorSlider'
 export const fetchEvents = 'events'
 export const fetchSingleEvent = 'singleEvent'
 export const fetchSingleEventSlider = 'singleEventSlider'
+export const fetchSeries = 'series'
 
 export const fetchSingleCharacterSliderEvents = 'events'
 export const fetchSingleCharacterSliderStories = 'stories'
