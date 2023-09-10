@@ -1,3 +1,4 @@
+// refactoring!!!
 export const fetchCharacters = 'characters'
 export const fetchSingleCharacter = 'singleCharacter'
 export const fetchSingleCharacterSlider = 'singleCharacterSlider'
@@ -7,6 +8,7 @@ export const fetchSingleComicsSlider = 'singleComicsSlider'
 export const fetchCreators = 'creators'
 export const fetchSingleCreator = 'singleCreator'
 export const fetchSingleCreatorSlider = 'singleCreatorSlider'
+export const fetchEvents = 'events'
 
 export const fetchSingleCharacterSliderEvents = 'events'
 export const fetchSingleCharacterSliderStories = 'stories'
