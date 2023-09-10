@@ -10,6 +10,7 @@ import ComicsPage from './containers/ComicsPage/ComicsPage'
 import SingleComics from './containers/SingleComics/SingleComics'
 import CreatorsPage from './containers/CreatorsPage/CreatorsPage'
 import './styles/index.scss'
+import SingleCreator from './containers/SingleCreator/SingleCreator'
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
         path: 'creators',
         element: <CreatorsPage />,
       },
+      { path: 'creators/:id', element: <SingleCreator /> },
     ],
   },
 ])

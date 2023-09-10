@@ -2,6 +2,7 @@ import MD5 from 'crypto-js/md5'
 import {
   fetchSingleCharacter,
   fetchSingleComics,
+  fetchSingleCreator,
 } from '../static/fetchingTypes'
 
 const API_URL = process.env.REACT_APP_BASE_URL
@@ -32,12 +33,15 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       if (sliderType === 'comics') {
         url += 'comics'
       }
+
       if (sliderType === 'events') {
         url += 'events'
       }
+
       if (sliderType === 'stories') {
         url += 'stories'
       }
+
       if (sliderType === 'series') {
         url += 'series'
       }
@@ -83,6 +87,32 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       url = `${API_URL}/v1/public/creators?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${searchTerm}`
       break
 
+    case 'singleCreator':
+      url = `${API_URL}/v1/public/creators/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
+    case 'singleCreatorSlider':
+      url = `${API_URL}/v1/public/creators/${id}/`
+
+      if (sliderType === 'comics') {
+        url += 'comics'
+      }
+
+      if (sliderType === 'events') {
+        url += 'events'
+      }
+
+      if (sliderType === 'stories') {
+        url += 'stories'
+      }
+
+      if (sliderType === 'series') {
+        url += 'series'
+      }
+
+      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
     default:
       break
   }
@@ -103,7 +133,11 @@ export const fetching = async (
     const response = await fetch(url)
     const dataObj = await response.json()
     const dataArr = dataObj.data.results
-    if (type === fetchSingleCharacter || type === fetchSingleComics) {
+    if (
+      type === fetchSingleCharacter ||
+      type === fetchSingleComics ||
+      type === fetchSingleCreator
+    ) {
       setObject(...dataArr)
     } else {
       setObject(dataArr)

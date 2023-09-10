@@ -32,7 +32,6 @@ const LinkComics = ({ url, text }) => {
 
 const SingleComicsItem = ({ element }) => {
   const { thumbnail } = element
-  console.log(element)
   const imgPath = thumbnail.path + '/' + image_full + '.' + thumbnail.extension
 
   const dateExtracting = (date) => {
