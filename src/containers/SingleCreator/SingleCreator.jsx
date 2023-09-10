@@ -7,7 +7,6 @@ import styles from './SingleCreator.module.scss'
 
 const SingleCreator = () => {
   const { id } = useParams()
-  console.log(id)
   return (
     <SingleElement
       id={id}

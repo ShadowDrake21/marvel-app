@@ -3,6 +3,7 @@ import {
   fetchSingleCharacter,
   fetchSingleComics,
   fetchSingleCreator,
+  fetchSingleEvent,
 } from '../static/fetchingTypes'
 
 const API_URL = process.env.REACT_APP_BASE_URL
@@ -30,6 +31,7 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
     case 'singleCharacterSlider':
       url = `${API_URL}/v1/public/characters/${id}/`
 
+      // refactoring !!!
       if (sliderType === 'comics') {
         url += 'comics'
       }
@@ -117,6 +119,36 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       url = `${API_URL}/v1/public/events?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${searchTerm}`
       break
 
+    case 'singleEvent':
+      url = `${API_URL}/v1/public/events/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
+    case 'singleEventSlider':
+      url = `${API_URL}/v1/public/events/${id}/`
+
+      if (sliderType === 'comics') {
+        url += 'comics'
+      }
+
+      if (sliderType === 'characters') {
+        url += 'characters'
+      }
+
+      if (sliderType === 'stories') {
+        url += 'stories'
+      }
+
+      if (sliderType === 'series') {
+        url += 'series'
+      }
+
+      if (sliderType === 'creators') {
+        url += 'creators'
+      }
+
+      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
     default:
       break
   }
@@ -141,7 +173,8 @@ export const fetching = async (
     if (
       type === fetchSingleCharacter ||
       type === fetchSingleComics ||
-      type === fetchSingleCreator
+      type === fetchSingleCreator ||
+      type === fetchSingleEvent
     ) {
       setObject(...dataArr)
     } else {

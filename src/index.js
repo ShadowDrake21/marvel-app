@@ -12,6 +12,7 @@ import CreatorsPage from './containers/CreatorsPage/CreatorsPage'
 import './styles/index.scss'
 import SingleCreator from './containers/SingleCreator/SingleCreator'
 import EventsPage from './containers/EventsPage/EventsPage'
+import SingleEvent from './containers/SingleEvent/SingleEvent'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
         path: 'events',
         element: <EventsPage />,
       },
+      { path: 'events/:id', element: <SingleEvent /> },
     ],
   },
 ])
