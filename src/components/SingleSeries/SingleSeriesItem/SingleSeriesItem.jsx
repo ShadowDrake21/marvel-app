@@ -9,7 +9,9 @@ import {
   fetchSingleElementSliderCreators,
   fetchSingleElementSliderEvents,
   fetchSingleElementSliderStories,
+  fetchSingleSeriesSlider,
   fetchSingleStoriesSlider,
+  sliderWithoutImages,
 } from '../../../static/fetchingTypes'
 
 const SingleSeriesItem = ({ element }) => {
@@ -28,33 +30,32 @@ const SingleSeriesItem = ({ element }) => {
               ? element.description
               : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, possimus natus facere quia tenetur maxime. Saepe debitis, possimus enim voluptatem veniam laudantium hic mollitia asperiores quas modi provident, nisi numquam quis architecto quasi ipsam! Provident itaque rem in nemo voluptatum nobis atque assumenda, aperiam quidem iure! '}
           </p>
-          {/* <SliderUI
-            fetchingCriteria={fetchSingleStoriesSlider}
+          <SliderUI
+            fetchingCriteria={fetchSingleSeriesSlider}
             sliderType={fetchSingleElementSliderComics}
-          /> */}
+          />
         </div>
       </div>
-      {/* there is no image !!! */}
-      {/* <div className={styles.middle}>
+      <div className={styles.middle}>
         <SliderUI
-          fetchingCriteria={fetchSingleStoriesSlider}
+          fetchingCriteria={fetchSingleSeriesSlider}
           sliderType={fetchSingleElementSliderCharacters}
         />
         <SliderUI
-          fetchingCriteria={fetchSingleStoriesSlider}
+          fetchingCriteria={fetchSingleSeriesSlider}
           sliderType={fetchSingleElementSliderEvents}
         />
       </div>
       <div className={styles.bottom}>
         <SliderUI
-          fetchingCriteria={fetchSingleStoriesSlider}
+          fetchingCriteria={fetchSingleSeriesSlider}
           sliderType={fetchSingleElementSliderCreators}
         />
         <SliderUI
-          fetchingCriteria={fetchSingleStoriesSlider}
+          fetchingCriteria={fetchSingleSeriesSlider}
           sliderType={fetchSingleElementSliderStories}
         />
-      </div> */}
+      </div>
     </div>
   )
 }
