@@ -1,26 +1,20 @@
 import React from 'react'
-import styles from './SingleSeriesItem.module.scss'
-import { image_full } from '../../../services/imageSizes'
-import TitleUI from '../../UI/TitleUI/TitleUI'
+import styles from './SingleStoryItem.module.scss'
 import SliderUI from '../../UI/SliderUI/SliderUI'
 import {
   fetchSingleElementSliderCharacters,
   fetchSingleElementSliderComics,
   fetchSingleElementSliderCreators,
   fetchSingleElementSliderEvents,
-  fetchSingleElementSliderStories,
-  fetchSingleSeriesSlider,
+  fetchSingleElementSliderSeries,
+  fetchSingleStoriesSlider,
 } from '../../../static/fetchingTypes'
+import TitleUI from '../../UI/TitleUI/TitleUI'
 
-const SingleSeriesItem = ({ element }) => {
-  const { thumbnail } = element
-  const imgPath = thumbnail.path + '/' + image_full + '.' + thumbnail.extension
+const SingleStoryItem = ({ element }) => {
   return (
     <div className={styles.item}>
       <div className={styles.top}>
-        <div className={styles.imgWrapper}>
-          <img className={styles.img} src={imgPath} alt="img" />
-        </div>
         <div className={styles.info}>
           <TitleUI text={element.title} />
           <p className={styles.text}>
@@ -28,34 +22,36 @@ const SingleSeriesItem = ({ element }) => {
               ? element.description
               : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, possimus natus facere quia tenetur maxime. Saepe debitis, possimus enim voluptatem veniam laudantium hic mollitia asperiores quas modi provident, nisi numquam quis architecto quasi ipsam! Provident itaque rem in nemo voluptatum nobis atque assumenda, aperiam quidem iure! '}
           </p>
-          <SliderUI
-            fetchingCriteria={fetchSingleSeriesSlider}
-            sliderType={fetchSingleElementSliderComics}
-          />
+          <div className={styles.info__item}>
+            <SliderUI
+              fetchingCriteria={fetchSingleStoriesSlider}
+              sliderType={fetchSingleElementSliderComics}
+            />
+            <SliderUI
+              fetchingCriteria={fetchSingleStoriesSlider}
+              sliderType={fetchSingleElementSliderCharacters}
+            />
+          </div>
         </div>
       </div>
       <div className={styles.middle}>
         <SliderUI
-          fetchingCriteria={fetchSingleSeriesSlider}
-          sliderType={fetchSingleElementSliderCharacters}
+          fetchingCriteria={fetchSingleStoriesSlider}
+          sliderType={fetchSingleElementSliderEvents}
         />
         <SliderUI
-          fetchingCriteria={fetchSingleSeriesSlider}
-          sliderType={fetchSingleElementSliderEvents}
+          fetchingCriteria={fetchSingleStoriesSlider}
+          sliderType={fetchSingleElementSliderSeries}
         />
       </div>
       <div className={styles.bottom}>
         <SliderUI
-          fetchingCriteria={fetchSingleSeriesSlider}
+          fetchingCriteria={fetchSingleStoriesSlider}
           sliderType={fetchSingleElementSliderCreators}
-        />
-        <SliderUI
-          fetchingCriteria={fetchSingleSeriesSlider}
-          sliderType={fetchSingleElementSliderStories}
         />
       </div>
     </div>
   )
 }
 
-export default SingleSeriesItem
+export default SingleStoryItem
