@@ -4,6 +4,7 @@ import {
   fetchSingleComics,
   fetchSingleCreator,
   fetchSingleEvent,
+  fetchSingleSeries,
 } from '../static/fetchingTypes'
 
 const API_URL = process.env.REACT_APP_BASE_URL
@@ -153,6 +154,36 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       url = `${API_URL}/v1/public/series?ts=${ts}&apikey=${publicKey}&hash=${hash}&titleStartsWith=${searchTerm}`
       break
 
+    case 'singleSeries':
+      url = `${API_URL}/v1/public/series/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
+    case 'singleSeriesSlider':
+      url = `${API_URL}/v1/public/series/${id}/`
+
+      if (sliderType === 'comics') {
+        url += 'comics'
+      }
+
+      if (sliderType === 'characters') {
+        url += 'characters'
+      }
+
+      if (sliderType === 'stories') {
+        url += 'stories'
+      }
+
+      if (sliderType === 'events') {
+        url += 'events'
+      }
+
+      if (sliderType === 'creators') {
+        url += 'creators'
+      }
+
+      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      break
+
     default:
       break
   }
@@ -178,12 +209,14 @@ export const fetching = async (
       type === fetchSingleCharacter ||
       type === fetchSingleComics ||
       type === fetchSingleCreator ||
-      type === fetchSingleEvent
+      type === fetchSingleEvent ||
+      type === fetchSingleSeries
     ) {
       setObject(...dataArr)
     } else {
       setObject(dataArr)
     }
+    console.log(dataArr)
     setBoolean(true)
   } catch (err) {
     setBoolean('error')
