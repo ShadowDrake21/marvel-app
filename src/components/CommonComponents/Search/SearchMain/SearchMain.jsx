@@ -18,13 +18,15 @@ const SearchMain = ({ title, placeholder, component: Component }) => {
   return (
     <div className="container">
       <TitleUI text={title} />
-      <InputUI
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        onClick={clearSearch}
-      />
-      {value && <Component searchTerm={value} />}
+      {title !== 'Stories' && (
+        <InputUI
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          onClick={clearSearch}
+        />
+      )}
+      {(value || title === 'Stories') && <Component searchTerm={value} />}
     </div>
   )
 }

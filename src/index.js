@@ -15,6 +15,7 @@ import EventsPage from './containers/EventsPage/EventsPage'
 import SingleEvent from './containers/SingleEvent/SingleEvent'
 import SeriesPage from './containers/SeriesPage/SeriesPage'
 import SingleSeries from './containers/SingleSeries/SingleSeries'
+import StoriesPage from './containers/StoriesPage/StoriesPage'
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         element: <SeriesPage />,
       },
       { path: 'series/:id', element: <SingleSeries /> },
+      {
+        path: 'stories',
+        element: <StoriesPage />,
+      },
     ],
   },
 ])

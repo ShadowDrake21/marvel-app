@@ -31,7 +31,7 @@ const Header = () => {
               <HeaderLink text="Series" path="series" />
             </li>
             <li>
-              <HeaderLink text="Stories" path="/" />
+              <HeaderLink text="Stories" path="stories" />
             </li>
           </ul>
         </div>
