@@ -184,6 +184,10 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
       url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
       break
 
+    case 'stories':
+      url = `${API_URL}/v1/public/stories?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=100`
+      break
+
     default:
       break
   }
