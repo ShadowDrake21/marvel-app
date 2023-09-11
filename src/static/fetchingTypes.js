@@ -15,6 +15,8 @@ export const fetchSeries = 'series'
 export const fetchSingleSeries = 'singleSeries'
 export const fetchSingleSeriesSlider = 'singleSeriesSlider'
 export const fetchStories = 'stories'
+export const fetchSingleStory = 'singleStory'
+export const fetchSingleStoriesSlider = 'singleStoriesSlider'
 
 export const fetchSingleCharacterSliderEvents = 'events'
 export const fetchSingleCharacterSliderStories = 'stories'
