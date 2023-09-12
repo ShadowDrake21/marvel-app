@@ -22,201 +22,89 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
 
   let url
 
+  const elementUrl = (elementType, criteria) => {
+    return `${API_URL}/v1/public/${elementType}?ts=${ts}&apikey=${publicKey}&hash=${hash}&${criteria}`
+  }
+
+  const singleElementUrl = (elementType) => {
+    return `${API_URL}/v1/public/${elementType}/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+  }
+
+  const singleElementSliderUrl = (elementType) => {
+    return `${API_URL}/v1/public/${elementType}/${id}/${sliderType}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+  }
+
   switch (String(type)) {
     case 'characters':
-      url = `${API_URL}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${searchTerm}`
+      url = elementUrl('characters', `nameStartsWith=${searchTerm}`)
       break
+
     case 'singleCharacter':
-      url = `${API_URL}/v1/public/characters/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementUrl('characters')
       break
 
     case 'singleCharacterSlider':
-      url = `${API_URL}/v1/public/characters/${id}/`
-
-      // refactoring !!!
-      if (sliderType === 'comics') {
-        url += 'comics'
-      }
-
-      if (sliderType === 'events') {
-        url += 'events'
-      }
-
-      if (sliderType === 'stories') {
-        url += 'stories'
-      }
-
-      if (sliderType === 'series') {
-        url += 'series'
-      }
-
-      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
-
-      if (sliderType === 'comics') {
-        console.log(url)
-      }
+      url = singleElementSliderUrl('characters')
       break
 
     case 'comics':
-      url = `${API_URL}/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&titleStartsWith=${searchTerm}`
+      url = elementUrl('comics', `titleStartsWith=${searchTerm}`)
       break
 
     case 'singleComics':
-      url = `${API_URL}/v1/public/comics/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementUrl('comics')
       break
 
     case 'singleComicsSlider':
-      url = `${API_URL}/v1/public/comics/${id}/`
-
-      if (sliderType === 'creators') {
-        url += 'creators'
-      }
-
-      if (sliderType === 'characters') {
-        url += 'characters'
-      }
-
-      if (sliderType === 'events') {
-        url += 'events'
-      }
-
-      if (sliderType === 'stories') {
-        url += 'stories'
-      }
-
-      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementSliderUrl('comics')
       break
 
     case 'creators':
-      url = `${API_URL}/v1/public/creators?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${searchTerm}`
+      url = elementUrl('creators', `nameStartsWith=${searchTerm}`)
       break
 
     case 'singleCreator':
-      url = `${API_URL}/v1/public/creators/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementUrl('creators')
       break
 
     case 'singleCreatorSlider':
-      url = `${API_URL}/v1/public/creators/${id}/`
-
-      if (sliderType === 'comics') {
-        url += 'comics'
-      }
-
-      if (sliderType === 'events') {
-        url += 'events'
-      }
-
-      if (sliderType === 'stories') {
-        url += 'stories'
-      }
-
-      if (sliderType === 'series') {
-        url += 'series'
-      }
-
-      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementSliderUrl('creators')
       break
 
     case 'events':
-      url = `${API_URL}/v1/public/events?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${searchTerm}`
+      url = elementUrl('events', `nameStartsWith=${searchTerm}`)
       break
 
     case 'singleEvent':
-      url = `${API_URL}/v1/public/events/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementUrl('events')
       break
 
     case 'singleEventSlider':
-      url = `${API_URL}/v1/public/events/${id}/`
-
-      if (sliderType === 'comics') {
-        url += 'comics'
-      }
-
-      if (sliderType === 'characters') {
-        url += 'characters'
-      }
-
-      if (sliderType === 'stories') {
-        url += 'stories'
-      }
-
-      if (sliderType === 'series') {
-        url += 'series'
-      }
-
-      if (sliderType === 'creators') {
-        url += 'creators'
-      }
-
-      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementSliderUrl('events')
       break
 
     case 'series':
-      url = `${API_URL}/v1/public/series?ts=${ts}&apikey=${publicKey}&hash=${hash}&titleStartsWith=${searchTerm}`
+      url = elementUrl('series', `titleStartsWith=${searchTerm}`)
       break
 
     case 'singleSeries':
-      url = `${API_URL}/v1/public/series/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementUrl('series')
       break
 
     case 'singleSeriesSlider':
-      url = `${API_URL}/v1/public/series/${id}/`
-
-      if (sliderType === 'comics') {
-        url += 'comics'
-      }
-
-      if (sliderType === 'characters') {
-        url += 'characters'
-      }
-
-      if (sliderType === 'stories') {
-        url += 'stories'
-      }
-
-      if (sliderType === 'events') {
-        url += 'events'
-      }
-
-      if (sliderType === 'creators') {
-        url += 'creators'
-      }
-
-      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementSliderUrl('series')
       break
 
     case 'stories':
-      url = `${API_URL}/v1/public/stories?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=100`
+      url = elementUrl('stories', `limit=100`)
       break
 
     case 'singleStory':
-      url = `${API_URL}/v1/public/stories/${id}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementUrl('stories')
       break
 
     case 'singleStoriesSlider':
-      url = `${API_URL}/v1/public/stories/${id}/`
-
-      if (sliderType === 'comics') {
-        url += 'comics'
-      }
-
-      if (sliderType === 'characters') {
-        url += 'characters'
-      }
-
-      if (sliderType === 'series') {
-        url += 'series'
-      }
-
-      if (sliderType === 'events') {
-        url += 'events'
-      }
-
-      if (sliderType === 'creators') {
-        url += 'creators'
-      }
-
-      url += `?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      url = singleElementSliderUrl('stories')
       break
 
     default:
@@ -224,6 +112,25 @@ const putUrl = (type, searchTerm, id, sliderType = null) => {
   }
 
   return url
+}
+
+const typeChecking = (type) => {
+  const typesArr = [
+    fetchSingleCharacter,
+    fetchSingleComics,
+    fetchSingleCreator,
+    fetchSingleEvent,
+    fetchSingleSeries,
+    fetchSingleStory,
+  ]
+
+  for (let typeArr of typesArr) {
+    if (typeArr === type) {
+      return true
+    }
+  }
+
+  return false
 }
 
 export const fetching = async (
@@ -239,15 +146,7 @@ export const fetching = async (
     const response = await fetch(url)
     const dataObj = await response.json()
     const dataArr = dataObj.data.results
-    // refactoring!!!
-    if (
-      type === fetchSingleCharacter ||
-      type === fetchSingleComics ||
-      type === fetchSingleCreator ||
-      type === fetchSingleEvent ||
-      type === fetchSingleSeries ||
-      type === fetchSingleStory
-    ) {
+    if (typeChecking(type)) {
       setObject(...dataArr)
     } else {
       setObject(dataArr)
