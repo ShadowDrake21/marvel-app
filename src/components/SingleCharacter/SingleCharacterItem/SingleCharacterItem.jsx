@@ -2,13 +2,12 @@ import React from 'react'
 import { image_full } from '../../../services/imageSizes'
 import TitleUI from '../../UI/TitleUI/TitleUI'
 import SliderUI from '../../UI/SliderUI/SliderUI'
-import SingleCharacterSlider from '../SingleCharacterSlider/SingleCharacterSlider'
 import {
   fetchSingleCharacterSlider,
-  fetchSingleCharacterSliderComics,
-  fetchSingleCharacterSliderEvents,
-  fetchSingleCharacterSliderSeries,
-  fetchSingleCharacterSliderStories,
+  fetchSingleElementSliderComics,
+  fetchSingleElementSliderEvents,
+  fetchSingleElementSliderSeries,
+  fetchSingleElementSliderStories,
 } from '../../../static/fetchingTypes'
 import styles from './SingleCharacterItem.module.scss'
 
@@ -30,24 +29,24 @@ const SingleCharacterItem = ({ element }) => {
           </p>
           <SliderUI
             fetchingCriteria={fetchSingleCharacterSlider}
-            sliderType={fetchSingleCharacterSliderComics}
+            sliderType={fetchSingleElementSliderComics}
           />
         </div>
       </div>
       <div className={styles.middle}>
         <SliderUI
           fetchingCriteria={fetchSingleCharacterSlider}
-          sliderType={fetchSingleCharacterSliderEvents}
+          sliderType={fetchSingleElementSliderEvents}
         />
         <SliderUI
           fetchingCriteria={fetchSingleCharacterSlider}
-          sliderType={fetchSingleCharacterSliderSeries}
+          sliderType={fetchSingleElementSliderSeries}
         />
       </div>
       <div className={styles.bottom}>
         <SliderUI
           fetchingCriteria={fetchSingleCharacterSlider}
-          sliderType={fetchSingleCharacterSliderStories}
+          sliderType={fetchSingleElementSliderStories}
         />
       </div>
     </div>

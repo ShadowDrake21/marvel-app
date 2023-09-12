@@ -5,10 +5,12 @@ import { Link, useParams } from 'react-router-dom'
 import { fetching } from '../../../services/fetching'
 import Slider from 'react-slick'
 import { image_full } from '../../../services/imageSizes'
-import { fetchSingleCharacterSliderComics } from '../../../static/fetchingTypes'
-import styles from './SliderUI.module.scss'
+import { fetchSingleElementSliderComics } from '../../../static/fetchingTypes'
 import Pagination from '../../CommonComponents/Pagination/Pagination'
 import { RotatingLines } from 'react-loader-spinner'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import styles from './SliderUI.module.scss'
 
 const SliderUI = ({ fetchingCriteria, sliderType }) => {
   const [objects, setObjects] = useState([])
@@ -63,7 +65,7 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
             >
               <img
                 src={
-                  sliderType === fetchSingleCharacterSliderComics &&
+                  sliderType === fetchSingleElementSliderComics &&
                   object.images.length > 0
                     ? object.images[0].path +
                       '/' +

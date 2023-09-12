@@ -8,11 +8,10 @@ import styles from './SingleComicsItem.module.scss'
 import SliderUI from '../../UI/SliderUI/SliderUI'
 import {
   fetchSingleComicsSlider,
-  fetchSingleComicsSliderCharacters,
-  fetchSingleComicsSliderCreators,
-  fetchSingleComicsSliderEvents,
-  fetchSingleComicsSliderSeries,
-  fetchSingleComicsSliderStories,
+  fetchSingleElementSliderCharacters,
+  fetchSingleElementSliderCreators,
+  fetchSingleElementSliderEvents,
+  fetchSingleElementSliderStories,
 } from '../../../static/fetchingTypes'
 
 dayjs.extend(relativeTime)
@@ -129,24 +128,24 @@ const SingleComicsItem = ({ element }) => {
           </div>
           <SliderUI
             fetchingCriteria={fetchSingleComicsSlider}
-            sliderType={fetchSingleComicsSliderCreators}
+            sliderType={fetchSingleElementSliderCreators}
           />
         </div>
       </div>
       <div className={styles.middle}>
         <SliderUI
           fetchingCriteria={fetchSingleComicsSlider}
-          sliderType={fetchSingleComicsSliderCharacters}
+          sliderType={fetchSingleElementSliderCharacters}
         />
         <SliderUI
           fetchingCriteria={fetchSingleComicsSlider}
-          sliderType={fetchSingleComicsSliderEvents}
+          sliderType={fetchSingleElementSliderEvents}
         />
       </div>
       <div className={styles.bottom}>
         <SliderUI
           fetchingCriteria={fetchSingleComicsSlider}
-          sliderType={fetchSingleComicsSliderStories}
+          sliderType={fetchSingleElementSliderStories}
         />
       </div>
     </div>
