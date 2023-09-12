@@ -37,6 +37,11 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
     }
   }
 
+  const formLink = (sliderType, id) => {
+    console.log(sliderType + '/' + id)
+    return sliderType + '/' + id
+  }
+
   const settings = {
     dots: true,
     infinite: true,
@@ -50,22 +55,26 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
       <h3 className={styles.title}>{sliderType}</h3>
       {objects.length > 0 && sliderType !== 'stories' && (
         <Slider {...settings}>
-          {objects.map((feature) => (
-            <Link to="/" key={feature.id} className={styles.sliderItem}>
+          {objects.map((object) => (
+            <Link
+              to={'/' + formLink(sliderType, object.id)}
+              key={object.id}
+              className={styles.sliderItem}
+            >
               <img
                 src={
                   sliderType === fetchSingleCharacterSliderComics &&
-                  feature.images.length > 0
-                    ? feature.images[0].path +
+                  object.images.length > 0
+                    ? object.images[0].path +
                       '/' +
                       image_full +
                       '.' +
-                      feature.images[0].extension
-                    : feature.thumbnail.path +
+                      object.images[0].extension
+                    : object.thumbnail.path +
                       '/' +
                       image_full +
                       '.' +
-                      feature.thumbnail.extension
+                      object.thumbnail.extension
                 }
                 alt="img"
                 className={styles.sliderImg}
@@ -77,9 +86,13 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
       <div className={styles.storiesWrapper}>
         {loading &&
           sliderType === 'stories' &&
-          currentPosts.map((feature) => (
-            <Link to="/" className={styles.storiesItem} key={feature.id}>
-              {feature.title || 'Unknown story'}
+          currentPosts.map((object) => (
+            <Link
+              to={'/' + formLink(sliderType, object.id)}
+              className={styles.storiesItem}
+              key={object.id}
+            >
+              {object.title || 'Unknown story'}
             </Link>
           ))}
       </div>
