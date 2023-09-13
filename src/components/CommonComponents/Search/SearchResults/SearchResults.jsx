@@ -24,8 +24,6 @@ const SearchResults = ({
   const firstPostIndex = lastPostIndex - postPerPage
   const currentPosts = objects.slice(firstPostIndex, lastPostIndex)
 
-  console.log(objects)
-
   return (
     <div className={styles.cards}>
       {!loading && objects.length === 0 && (

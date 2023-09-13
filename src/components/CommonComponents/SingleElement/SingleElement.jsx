@@ -8,7 +8,6 @@ import styles from './SingleElement.module.scss'
 const SingleElement = ({ id, fetchCriteria, component: Component }) => {
   const [element, setElement] = useState({})
   const [loading, setLoading] = useState(false)
-  console.log(element)
 
   useEffect(() => {
     fetching(fetchCriteria, setElement, setLoading, undefined, id)
