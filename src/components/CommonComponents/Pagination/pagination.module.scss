@@ -1,16 +1,16 @@
 .pagination {
   display: flex;
-  gap: 10px;
+  gap: var(--gap-small);
 }
 
 .paginationBtn {
-  width: 35px;
-  height: 35px;
+  width: var(--size-paginationBtn);
+  height: var(--size-paginationBtn);
   background-color: var(--color-bluekish);
   color: #fff;
   font-size: 20px;
   border: 1px solid #fff;
-  border-radius: 5px;
+  border-radius: var(--border-radius-small);
   box-shadow: 7px -13px 26px -8px rgba(0, 0, 0, 0.75);
   cursor: pointer;
 

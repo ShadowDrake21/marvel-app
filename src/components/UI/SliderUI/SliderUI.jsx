@@ -40,7 +40,6 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
   }
 
   const formLink = (sliderType, id) => {
-    console.log(sliderType + '/' + id)
     return sliderType + '/' + id
   }
 

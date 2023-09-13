@@ -3,6 +3,7 @@ import { image_full } from '../../../services/imageSizes'
 import styles from './SingleEventItem.module.scss'
 import TitleUI from '../../UI/TitleUI/TitleUI'
 import SliderUI from '../../UI/SliderUI/SliderUI'
+import cn from 'classnames'
 import {
   fetchSingleElementSliderCharacters,
   fetchSingleElementSliderComics,
@@ -11,22 +12,21 @@ import {
   fetchSingleElementSliderStories,
   fetchSingleEventSlider,
 } from '../../../static/fetchingTypes'
+import { substituteText } from '../../../static/generatedText'
 
 const SingleEventItem = ({ element }) => {
   const { thumbnail } = element
   const imgPath = thumbnail.path + '/' + image_full + '.' + thumbnail.extension
   return (
-    <div className={styles.item}>
-      <div className={styles.top}>
-        <div className={styles.imgWrapper}>
-          <img className={styles.img} src={imgPath} alt="img" />
+    <div className={cn(styles.item, 'singleElementItem')}>
+      <div className={cn(styles.top, 'top')}>
+        <div className="imgWrapper">
+          <img className="img" src={imgPath} alt="img" />
         </div>
-        <div className={styles.info}>
+        <div className={cn(styles.info, 'info')}>
           <TitleUI text={element.title} />
-          <p className={styles.text}>
-            {element.description
-              ? element.description
-              : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, possimus natus facere quia tenetur maxime. Saepe debitis, possimus enim voluptatem veniam laudantium hic mollitia asperiores quas modi provident, nisi numquam quis architecto quasi ipsam! Provident itaque rem in nemo voluptatum nobis atque assumenda, aperiam quidem iure! '}
+          <p className={'text'}>
+            {element.description ? element.description : substituteText}
           </p>
           <SliderUI
             fetchingCriteria={fetchSingleEventSlider}
@@ -34,7 +34,7 @@ const SingleEventItem = ({ element }) => {
           />
         </div>
       </div>
-      <div className={styles.middle}>
+      <div className="middle">
         <SliderUI
           fetchingCriteria={fetchSingleEventSlider}
           sliderType={fetchSingleElementSliderCharacters}
@@ -44,7 +44,7 @@ const SingleEventItem = ({ element }) => {
           sliderType={fetchSingleElementSliderSeries}
         />
       </div>
-      <div className={styles.bottom}>
+      <div className={cn(styles.bottom, 'bottom')}>
         <SliderUI
           fetchingCriteria={fetchSingleEventSlider}
           sliderType={fetchSingleElementSliderCreators}
