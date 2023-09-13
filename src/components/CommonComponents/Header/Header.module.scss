@@ -19,7 +19,7 @@
 }
 
 .list__container {
-  width: 800px;
+  width: var(--width-normal);
   display: flex;
   justify-content: space-between;
   list-style-type: none;

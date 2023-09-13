@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px 25px;
+  gap: var(--gap-medium) var(--gap-upper-medium);
 }
 
 .fetchError {

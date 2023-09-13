@@ -6,7 +6,7 @@
     font-size: 22px;
     text-align: center;
     text-transform: capitalize;
-    margin: 10px;
+    margin: var(--margin-higher-small);
   }
 
   .emptySlider {
@@ -16,24 +16,24 @@
   }
 
   .storiesWrapper {
-    margin-bottom: 25px;
+    margin-bottom: var(--margin-higher-normal);
     .storiesItem {
       display: block;
       text-align: center;
       white-space: nowrap;
       width: 100%;
-      font-size: 18px;
-      line-height: 1.5;
+      font-size: var(--font-size-subheader);
+      line-height: var(--line-height-normal);
       font-weight: 500;
-      padding: 5px 10px;
-      margin-bottom: 10px;
+      padding: var(--padding-y-small) var(--padding-higher-small);
+      margin-bottom: var(--margin-higher-small);
       background-color: #adb0e0;
       color: var(--color-white);
       border: 2px solid #8c90c0;
       border-radius: var(--border-radius-card);
       text-overflow: ellipsis;
       overflow: hidden;
-      transition: all 0.3s;
+      transition: all var(--transition-duration-normal);
 
       &:hover {
         background-color: #9ca1df;

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './SingleStoryItem.module.scss'
 import SliderUI from '../../UI/SliderUI/SliderUI'
+import cn from 'classnames'
 import {
   fetchSingleElementSliderCharacters,
   fetchSingleElementSliderComics,
@@ -10,17 +11,16 @@ import {
   fetchSingleStoriesSlider,
 } from '../../../static/fetchingTypes'
 import TitleUI from '../../UI/TitleUI/TitleUI'
+import { substituteText } from '../../../static/generatedText'
 
 const SingleStoryItem = ({ element }) => {
   return (
-    <div className={styles.item}>
-      <div className={styles.top}>
-        <div className={styles.info}>
+    <div className={cn(styles.item, 'singleElementItem')}>
+      <div className={cn(styles.top, 'top')}>
+        <div className={cn(styles.info, 'info')}>
           <TitleUI text={element.title} />
-          <p className={styles.text}>
-            {element.description
-              ? element.description
-              : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, possimus natus facere quia tenetur maxime. Saepe debitis, possimus enim voluptatem veniam laudantium hic mollitia asperiores quas modi provident, nisi numquam quis architecto quasi ipsam! Provident itaque rem in nemo voluptatum nobis atque assumenda, aperiam quidem iure! '}
+          <p className={'text'}>
+            {element.description ? element.description : substituteText}
           </p>
           <div className={styles.info__item}>
             <SliderUI
@@ -34,7 +34,7 @@ const SingleStoryItem = ({ element }) => {
           </div>
         </div>
       </div>
-      <div className={styles.middle}>
+      <div className="middle">
         <SliderUI
           fetchingCriteria={fetchSingleStoriesSlider}
           sliderType={fetchSingleElementSliderEvents}
@@ -44,7 +44,7 @@ const SingleStoryItem = ({ element }) => {
           sliderType={fetchSingleElementSliderSeries}
         />
       </div>
-      <div className={styles.bottom}>
+      <div className="bottom">
         <SliderUI
           fetchingCriteria={fetchSingleStoriesSlider}
           sliderType={fetchSingleElementSliderCreators}

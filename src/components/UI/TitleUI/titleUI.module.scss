@@ -1,6 +1,6 @@
 .title {
-  line-height: 1.4;
+  line-height: var(--line-height-normal);
   text-align: center;
   font-size: var(--font-size-header);
-  margin: 20px 0;
+  margin: var(--margin-normal) 0;
 }

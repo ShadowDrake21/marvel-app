@@ -2,6 +2,7 @@ import React from 'react'
 import { image_full } from '../../../services/imageSizes'
 import TitleUI from '../../UI/TitleUI/TitleUI'
 import SliderUI from '../../UI/SliderUI/SliderUI'
+import cn from 'classnames'
 import {
   fetchSingleCreatorSlider,
   fetchSingleElementSliderComics,
@@ -15,12 +16,12 @@ const SingleCreatorItem = ({ element }) => {
   const { thumbnail } = element
   const imgPath = thumbnail.path + '/' + image_full + '.' + thumbnail.extension
   return (
-    <div className={styles.item}>
-      <div className={styles.top}>
-        <div className={styles.imgWrapper}>
-          <img className={styles.img} src={imgPath} alt="img" />
+    <div className={cn(styles.item, 'singleElementItem')}>
+      <div className={cn(styles.top, 'top')}>
+        <div className="imgWrapper">
+          <img className="img" src={imgPath} alt="img" />
         </div>
-        <div className={styles.info}>
+        <div className="info">
           <TitleUI text={element.fullName} />
           <SliderUI
             fetchingCriteria={fetchSingleCreatorSlider}
@@ -28,7 +29,7 @@ const SingleCreatorItem = ({ element }) => {
           />
         </div>
       </div>
-      <div className={styles.middle}>
+      <div className="middle">
         <SliderUI
           fetchingCriteria={fetchSingleCreatorSlider}
           sliderType={fetchSingleElementSliderEvents}
@@ -38,7 +39,7 @@ const SingleCreatorItem = ({ element }) => {
           sliderType={fetchSingleElementSliderSeries}
         />
       </div>
-      <div className={styles.bottom}>
+      <div className="bottom">
         <SliderUI
           fetchingCriteria={fetchSingleCreatorSlider}
           sliderType={fetchSingleElementSliderStories}

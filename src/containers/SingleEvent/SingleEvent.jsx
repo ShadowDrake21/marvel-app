@@ -7,7 +7,6 @@ import styles from './SingleEvent.module.scss'
 
 const SingleEvent = () => {
   const { id } = useParams()
-  console.log(id)
   return (
     <SingleElement
       id={id}

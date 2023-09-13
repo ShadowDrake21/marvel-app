@@ -8,12 +8,12 @@ import styles from './SingleComicsItem.module.scss'
 import SliderUI from '../../UI/SliderUI/SliderUI'
 import {
   fetchSingleComicsSlider,
-  fetchSingleComicsSliderCharacters,
-  fetchSingleComicsSliderCreators,
-  fetchSingleComicsSliderEvents,
-  fetchSingleComicsSliderSeries,
-  fetchSingleComicsSliderStories,
+  fetchSingleElementSliderCharacters,
+  fetchSingleElementSliderCreators,
+  fetchSingleElementSliderEvents,
+  fetchSingleElementSliderStories,
 } from '../../../static/fetchingTypes'
+import { substituteText } from '../../../static/generatedText'
 
 dayjs.extend(relativeTime)
 
@@ -74,17 +74,15 @@ const SingleComicsItem = ({ element }) => {
   const readerUrl = findRequiredProperty('reader', element.urls)
 
   return (
-    <div className={styles.item}>
-      <div className={styles.top}>
-        <div className={styles.imgWrapper}>
-          <img className={styles.img} src={imgPath} alt="img" />
+    <div className={cn(styles.item, 'singleElementItem')}>
+      <div className={cn(styles.top, 'top')}>
+        <div className={cn(styles.imgWrapper, 'imgWrapper')}>
+          <img className={cn(styles.img, 'img')} src={imgPath} alt="img" />
         </div>
-        <div className={styles.info}>
+        <div className={cn(styles.info, 'info')}>
           <TitleUI text={element.title} />
-          <p className={styles.text}>
-            {element.description
-              ? element.description
-              : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, possimus natus facere quia tenetur maxime. Saepe debitis, possimus enim voluptatem veniam laudantium hic mollitia asperiores quas modi provident, nisi numquam quis architecto quasi ipsam! Provident itaque rem in nemo voluptatum nobis atque assumenda, aperiam quidem iure! '}
+          <p className={cn(styles.text, 'text')}>
+            {element.description ? element.description : substituteText}
           </p>
           <div className={styles.details}>
             <div className={cn(styles.editionDetail, styles.detailsItem)}>
@@ -129,24 +127,24 @@ const SingleComicsItem = ({ element }) => {
           </div>
           <SliderUI
             fetchingCriteria={fetchSingleComicsSlider}
-            sliderType={fetchSingleComicsSliderCreators}
+            sliderType={fetchSingleElementSliderCreators}
           />
         </div>
       </div>
-      <div className={styles.middle}>
+      <div className="middle">
         <SliderUI
           fetchingCriteria={fetchSingleComicsSlider}
-          sliderType={fetchSingleComicsSliderCharacters}
+          sliderType={fetchSingleElementSliderCharacters}
         />
         <SliderUI
           fetchingCriteria={fetchSingleComicsSlider}
-          sliderType={fetchSingleComicsSliderEvents}
+          sliderType={fetchSingleElementSliderEvents}
         />
       </div>
-      <div className={styles.bottom}>
+      <div className="bottom">
         <SliderUI
           fetchingCriteria={fetchSingleComicsSlider}
-          sliderType={fetchSingleComicsSliderStories}
+          sliderType={fetchSingleElementSliderStories}
         />
       </div>
     </div>
