@@ -3,6 +3,7 @@ import Header from '../../components/CommonComponents/Header'
 import { useEffect } from 'react'
 import { getLocalStorage, setLocalStorage } from '../../services/localStorage'
 import { changeScssVariables } from '../../services/changeScssVariables'
+import Footer from '../../components/CommonComponents/Footer/Footer'
 
 function App() {
   if (Object.keys(getLocalStorage('theme')).length === 0) {
@@ -18,6 +19,7 @@ function App() {
         <Header />
       </div>
       <Outlet />
+      <Footer />
     </>
   )
 }
