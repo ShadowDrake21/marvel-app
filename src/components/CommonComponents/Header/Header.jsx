@@ -2,8 +2,16 @@ import React from 'react'
 import logo from '../../../assets/photos/logo.png'
 import { NavLink } from 'react-router-dom'
 import styles from './Header.module.scss'
+import { useState } from 'react'
+import { links } from '../../../static/generatedText'
+import CloseIcon from '@mui/icons-material/Close'
+import MenuIcon from '@mui/icons-material/Menu'
 
 const Header = () => {
+  const [nav, setNav] = useState(false)
+
+  // доробити адаптив меню
+
   return (
     <div className={styles.header}>
       <div className="container">
@@ -12,39 +20,44 @@ const Header = () => {
             <img src={logo} className={styles.logo} alt="logo" />
           </NavLink>
           <ul className={styles.list__container}>
-            <li>
-              <HeaderLink text="Home" path="home" />
-            </li>
-            <li>
-              <HeaderLink text="Characters" path="characters" />
-            </li>
-            <li>
-              <HeaderLink text="Comics" path="comics" />
-            </li>
-            <li>
-              <HeaderLink text="Creators" path="creators" />
-            </li>
-            <li>
-              <HeaderLink text="Events" path="events" />
-            </li>
-            <li>
-              <HeaderLink text="Series" path="series" />
-            </li>
-            <li>
-              <HeaderLink text="Stories" path="stories" />
-            </li>
+            {links.map(({ id, title, path }) => (
+              <li key={id}>
+                <HeaderLink text={title} path={path} />
+              </li>
+            ))}
           </ul>
+          <div className={styles.menu__btn} onClick={() => setNav(!nav)}>
+            {nav ? (
+              <CloseIcon sx={{ fontSize: 40 }} />
+            ) : (
+              <MenuIcon sx={{ fontSize: 40 }} />
+            )}
+          </div>
+          {nav && (
+            <ul className={styles.menu__adaptive}>
+              {links.map(({ id, title, path }) => (
+                <li key={id}>
+                  <HeaderLink
+                    text={title}
+                    path={path}
+                    onClick={() => setNav(!nav)}
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
   )
 }
 
-const HeaderLink = ({ text, path }) => {
+const HeaderLink = ({ text, path, onClick = null }) => {
   return (
     <NavLink
       to={path}
       className={({ isActive }) => (isActive ? `${styles.active}` : '')}
+      onClick={onClick}
     >
       {text}
     </NavLink>

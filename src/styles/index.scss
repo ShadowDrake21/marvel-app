@@ -14,6 +14,7 @@
 
   --font-size-normal: 16px;
   --font-size-subheader: 18px;
+  --font-size-menu: 22px;
   --font-size-header: 28px;
   --font-size-error: 32px;
 
@@ -94,6 +95,7 @@ body {
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   min-height: var(--height-full-display);
   color: var(--color-white);
   font-family: var(--font-family-basic);
@@ -139,7 +141,7 @@ h6 {
 
 .container {
   max-width: 1400px;
-  padding: 0 var(--padding-medium);
+  padding: 0 var(--padding-higher-small);
   margin: 0 auto;
 }
 
