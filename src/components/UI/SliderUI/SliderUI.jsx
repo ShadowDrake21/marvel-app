@@ -49,6 +49,23 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
     speed: 500,
     slidesToShow: numberOfSlides(),
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          dots: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
 
   return (

@@ -61,3 +61,19 @@
 .center {
   justify-content: center;
 }
+
+@media (max-width: 700px) {
+  .slider {
+    width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .slider {
+    width: 200px;
+
+    .storiesWrapper {
+      margin-bottom: 0;
+    }
+  }
+}
