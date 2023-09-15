@@ -28,7 +28,10 @@ const Header = () => {
           </ul>
           <div className={styles.menu__btn} onClick={() => setNav(!nav)}>
             {nav ? (
-              <CloseIcon sx={{ fontSize: 40 }} />
+              <CloseIcon
+                sx={{ fontSize: 40 }}
+                className={styles.menu__active}
+              />
             ) : (
               <MenuIcon sx={{ fontSize: 40 }} />
             )}

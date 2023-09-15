@@ -6,16 +6,15 @@
 .header__inner {
   display: flex;
   justify-content: space-between;
-}
+  .logo__link {
+    display: inline-block;
+    padding: var(--padding-y-small) 0;
+    height: var(--height-header-full);
 
-.logo__link {
-  display: inline-block;
-  padding: var(--padding-y-small) 0;
-  height: var(--height-header-full);
-}
-
-.logo {
-  height: 40px;
+    .logo {
+      height: 40px;
+    }
+  }
 }
 
 .list__container {
@@ -51,11 +50,16 @@
   align-items: center;
   cursor: pointer;
   z-index: 999;
+
+  .menu__active {
+    position: fixed;
+    right: 10px;
+  }
 }
 
 .menu__adaptive {
   display: flex;
-  position: absolute;
+  position: fixed;
   z-index: 998;
   flex-direction: column;
   justify-content: center;
