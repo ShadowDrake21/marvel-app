@@ -1,6 +1,7 @@
 .slider {
   width: 600px;
   color: var(--color-black);
+  margin-bottom: 15px;
 
   .title {
     font-size: 22px;
@@ -60,4 +61,24 @@
 
 .center {
   justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .slider {
+    width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .slider {
+    width: 200px;
+
+    .storiesWrapper {
+      margin-bottom: 0;
+    }
+
+    .emptySlider {
+      font-size: var(--font-size-menu);
+    }
+  }
 }

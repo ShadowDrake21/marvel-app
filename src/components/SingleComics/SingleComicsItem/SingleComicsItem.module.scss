@@ -59,3 +59,40 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .item {
+    .top {
+      .info {
+        .details {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px 0;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .item {
+    .top {
+      .imgWrapper {
+        max-width: 290px !important;
+
+        .img {
+          width: 290px !important;
+        }
+      }
+
+      .info {
+        font-size: var(--font-size-normal);
+        .details {
+          margin: 10px 0 0;
+        }
+      }
+    }
+  }
+}

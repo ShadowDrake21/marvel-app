@@ -4,3 +4,10 @@
   font-size: var(--font-size-header);
   margin: var(--margin-normal) 0;
 }
+
+@media (max-width: 500px) {
+  .title {
+    font-size: 24px;
+    margin: 10px;
+  }
+}

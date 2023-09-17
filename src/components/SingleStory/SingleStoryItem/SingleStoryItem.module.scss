@@ -10,3 +10,27 @@
     }
   }
 }
+
+@media (max-width: 1400px) {
+  .item {
+    .top {
+      padding-bottom: 15px;
+    }
+
+    .middle {
+      padding-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .item {
+    .top {
+      .info {
+        .info__item {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

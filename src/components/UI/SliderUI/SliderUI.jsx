@@ -49,6 +49,23 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
     speed: 500,
     slidesToShow: numberOfSlides(),
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: objects.length >= 2 ? 2 : 1,
+          slidesToScroll: objects.length >= 2 ? 2 : 1,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          dots: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
 
   return (
@@ -84,19 +101,20 @@ const SliderUI = ({ fetchingCriteria, sliderType }) => {
           ))}
         </Slider>
       )}
-      <div className={styles.storiesWrapper}>
-        {loading &&
-          sliderType === 'stories' &&
-          currentPosts.map((object) => (
-            <Link
-              to={'/' + formLink(sliderType, object.id)}
-              className={styles.storiesItem}
-              key={object.id}
-            >
-              {object.title || 'Unknown story'}
-            </Link>
-          ))}
-      </div>
+      {sliderType === 'stories' && (
+        <div className={styles.storiesWrapper}>
+          {loading &&
+            currentPosts.map((object) => (
+              <Link
+                to={'/' + formLink(sliderType, object.id)}
+                className={styles.storiesItem}
+                key={object.id}
+              >
+                {object.title || 'Unknown story'}
+              </Link>
+            ))}
+        </div>
+      )}
       {objects.length > postsPerPage && sliderType === 'stories' && (
         <Pagination
           totalPosts={objects.length}

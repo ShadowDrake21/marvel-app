@@ -25,26 +25,30 @@ const SearchResults = ({
   const currentPosts = objects.slice(firstPostIndex, lastPostIndex)
 
   return (
-    <div className={styles.cards}>
-      {!loading && objects.length === 0 && (
-        <RotatingLines
-          strokeColor="red"
-          strokeWidth="5"
-          animationDuration="0.75"
-          width="76"
-          visible={true}
-        />
-      )}
-      {loading &&
-        currentPosts.map((character) => (
-          <Component key={character.id} {...character} />
-        ))}
-      {objects.length === 0 && loading === true && (
-        <p className={styles.fetchError}>No results. Try another query</p>
-      )}
-      {loading === 'error' && (
-        <p className="fetchError">ERROR: Failed to fetch. Try one more time</p>
-      )}
+    <div className={styles.cards__wrapper}>
+      <div className={styles.cards}>
+        {!loading && objects.length === 0 && (
+          <RotatingLines
+            strokeColor="red"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="76"
+            visible={true}
+          />
+        )}
+        {loading &&
+          currentPosts.map((character) => (
+            <Component key={character.id} {...character} />
+          ))}
+        {objects.length === 0 && loading === true && (
+          <p className={styles.fetchError}>No results. Try another query</p>
+        )}
+        {loading === 'error' && (
+          <p className="fetchError">
+            ERROR: Failed to fetch. Try one more time
+          </p>
+        )}
+      </div>
       {objects.length > 10 && (
         <Pagination
           totalPosts={objects.length}
