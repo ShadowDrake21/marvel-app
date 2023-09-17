@@ -1,3 +1,6 @@
+import GitHubIcon from '@mui/icons-material/GitHub'
+import TwitterIcon from '@mui/icons-material/Twitter'
+
 export const links = [
   {
     id: 1,
@@ -38,3 +41,16 @@ export const links = [
 
 export const substituteText =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, possimus natus facere quia tenetur maxime. Saepe debitis, possimus enim voluptatem veniam laudantium hic mollitia asperiores quas modi provident, nisi numquam quis architecto quasi ipsam! Provident itaque rem in nemo voluptatum nobis atque assumenda, aperiam quidem iure!'
+
+export const socialLinks = [
+  {
+    id: 1,
+    icon: <GitHubIcon />,
+    link: 'https://github.com/ShadowDrake21',
+  },
+  {
+    id: 2,
+    icon: <TwitterIcon />,
+    link: 'https://twitter.com/ShadowDrake_21',
+  },
+]

@@ -1,5 +1,8 @@
 .footer {
+  display: flex;
+  justify-content: center;
   position: absolute;
+  gap: 20px;
   bottom: 0;
   width: 100%;
   margin-top: 30px;
@@ -9,5 +12,27 @@
 
   .footer__description {
     font-size: var(--font-size-subheader);
+
+    .footer__link {
+      margin-left: 5px;
+    }
+  }
+
+  .footer__list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer {
+    .footer__description {
+      font-size: var(--font-size-normal);
+    }
+
+    .footer__list {
+      gap: 10px;
+    }
   }
 }

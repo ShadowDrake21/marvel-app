@@ -10,8 +10,6 @@ import MenuIcon from '@mui/icons-material/Menu'
 const Header = () => {
   const [nav, setNav] = useState(false)
 
-  // доробити адаптив меню
-
   return (
     <div className={styles.header}>
       <div className="container">
