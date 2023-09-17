@@ -34,7 +34,7 @@ const SingleStoryItem = ({ element }) => {
           </div>
         </div>
       </div>
-      <div className="middle">
+      <div className={cn(styles.middle, 'middle')}>
         <SliderUI
           fetchingCriteria={fetchSingleStoriesSlider}
           sliderType={fetchSingleElementSliderEvents}
